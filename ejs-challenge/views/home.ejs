@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs'); -%>
+
+<div>
+<h1>Home </h1>
+
+<p> <%= SweetText %></p>
+
+
+
+
+
+
+    <% console.log('Welcome') %>
+    <%# console.log(postsAll[0].title) %>
+
+    <div class="box">
+
+        <%   postsAll.forEach(function(post) { %>
+        <%     console.log(post.title); %>
+        <div class="item">
+            <h1> <%= post.title %> </h1>
+            <p> <%= post.body.substring(1, 100) + "..." %> 
+            <a href="/posts/<%= post.title %>" </a>Read More
+            </p> 
+        </div>
+        <%      }); %>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs'); -%>

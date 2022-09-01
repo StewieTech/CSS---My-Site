@@ -1,0 +1,15 @@
+<%- include('partials/header.ejs'); -%>
+
+<h1>Home<h1/>
+
+    <p> <%= SweetAbout %></p>
+
+    <%   for (var i = 0; i < postsAll.length; i++) { %>
+        <% console.log(postsAll[i].title) %>
+        <div class = "item">
+        <p> <%= postsAll[i].title %> </p> 
+        </div>
+    <% } %>
+
+
+<%- include('partials/footer.ejs'); -%>
