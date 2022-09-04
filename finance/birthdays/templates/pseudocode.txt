@@ -1,0 +1,7 @@
+**TODO**
+
+1) query for all birthdays in app.py (else section)
+2) index.html render each birthday as a row in a table. Loop to loop over list and render one row
+3) add form to let users add a new birthday
+4) application.py
+    db.execute
