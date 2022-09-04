@@ -30,7 +30,7 @@ Web App built with Python, Flask, MySQL
 
 <h2> Newsletter Signup </h2>
 
-My First deployed Heroku web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to A mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
+My First deployed Heroku web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
 <a href="https://vast-plains-87636.herokuapp.com/?fbclid=IwAR08qF36XZXBIIu2Zua6UduX0sjp-CqG5NhLqaIgDHVEyfMkQbcuq4Xmwdc">My First Heroku Web App Click Here</a>
 
 <h2> Upcoming Timeline's </h2>
