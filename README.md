@@ -8,11 +8,14 @@ I have three main Projects
 3) Newsletter Signup that's Deployed On Heroku
 
 <h2> My Blog </h2>
-My Blog is built with Node.Js, Javascript, EJS, 
+Currently Located within my EJS challenge folder.
+My Blog is built with Node.Js, Javascript, EJS.
 
 ** Future Updates **
 1) Connect MongoDB 
 2) Deploy on Heroku
+3) Add a portfolio page within the website
+4) Add A game page within the Website
 
 
 <h2> Finance Web App </h2>
@@ -31,12 +34,19 @@ My First Heroku deployed web app. Using similar logic, I will deploy my other ap
 <a href="https://vast-plains-87636.herokuapp.com/?fbclid=IwAR08qF36XZXBIIu2Zua6UduX0sjp-CqG5NhLqaIgDHVEyfMkQbcuq4Xmwdc">Click Here</a>
 
 <h2> Upcoming Timeline's </h2>
+<p>
 2022 Q4: Deploy my first full stack appication with Node.JS, Javascript, MongoDB
+
 2022 Q4: Learn React
+
 2022 Q4: Learn Django, Dive deeper into Containerization with Docker & DevOps specifically around testing
 
 2023 Q1: Use Harvard CS50 Web Programming with Python and Javascript to launch my project. My project is around Streaming Subscription Management
+
 2023 Q2: Data Structures with Python: specifically dive into Algorithms by Robert cedrick Fourth edition
+  
+2023 Q4: Java Project
+</p>
 
 
 
