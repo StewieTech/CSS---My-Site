@@ -1,6 +1,6 @@
 # StewieTech Portolio
 
-** Welcome to my Github Portfolio **
+<b> Welcome to my Github Portfolio </b>
 
 I have three main Projects
 1) My Blog
@@ -16,6 +16,7 @@ My Blog is built with Node.Js, Javascript, EJS,
 
 
 <h2> Finance Web App </h2>
+Located within my Finance folder. This Web App allows a user to register with a password, login to my website, enter a stock ticker which then can be looked up within the IEX cloud API. It pulls back the full name and stock quote. 
 
 Web App built with Python, Flask, MySQL 
 
@@ -29,7 +30,13 @@ Web App built with Python, Flask, MySQL
 My First Heroku deployed web app. Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to A mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
 <a href="https://vast-plains-87636.herokuapp.com/?fbclid=IwAR08qF36XZXBIIu2Zua6UduX0sjp-CqG5NhLqaIgDHVEyfMkQbcuq4Xmwdc">Click Here</a>
 
-Current timeline:
-Q4: Deploy my first full stack appication with Node.JS, Javascript 
+<h2> Upcoming Timeline's </h2>
+2022 Q4: Deploy my first full stack appication with Node.JS, Javascript, MongoDB
+2022 Q4: Learn React
+2022 Q4: Learn Django, Dive deeper into Containerization with Docker & DevOps specifically around testing
+
+2023 Q1: Use Harvard CS50 Web Programming with Python and Javascript to launch my project. My project is around Streaming Subscription Management
+2023 Q2: Data Structures with Python: specifically dive into Algorithms by Robert cedrick Fourth edition
+
 
 
