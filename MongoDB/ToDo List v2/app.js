@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const date = require(__dirname + "/date.js");
 const mongoose = require("mongoose");
 const app = express();
+const _ = require("lodash");
 
 app.set("view engine", "ejs");
 
@@ -18,7 +19,7 @@ app.use(express.static("public"));
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/todolistDB");
+  await mongoose.connect("mongodb+srv://StewieTech:test123@cluster0.j31m7ms.mongodb.net/todolistDB");
 
   const itemsSchema = {
     name: String,
@@ -47,6 +48,7 @@ async function main() {
 
   const List = mongoose.model("List", listSchema);
 
+  // Adds item to default page or adds item to new/current page
   app.post("/", function (req, res) {
     const itemName = req.body.newItem;
     const listName = req.body.list;
@@ -76,6 +78,7 @@ async function main() {
 
   app.post("/delete", function (req, res) {
     const checkedItemId = req.body.checkbox;
+    const listName = req.body.listName2;
     
     if (listName === "Today") { 
       Item.findByIdAndRemove(checkedItemId, function (err) {
@@ -85,9 +88,16 @@ async function main() {
         }
       });
       } else {
-        List.findOneAndUpdate({name: listName}, {$pull: {items:{_id: checkedItemId}}}, funciton(err, listName){
+        List.findOneAndUpdate({name: listName}, {$pull: {items:{_id: checkedItemId}}}, function(err, listName){
           if (!err) {
-            res.redirect("/" + listName);
+            res.render("list", {
+              listTitle: listName.name,
+              newListItems: listName.items,
+            });
+            // res.redirect("/" + listName);
+            console.log("delete redirect is working properly!");
+
+
           }
         })
       }
@@ -95,10 +105,10 @@ async function main() {
 
    
 
-  };
+  
 
   app.get("/:anyItem", (req, res) => {
-    const customList = req.params.anyItem;
+    const customList = _.capitalize([req.params.anyItem]);
     console.log(customList);
 
     // res.render("customList")
@@ -141,10 +151,8 @@ async function main() {
         });
         res.redirect("/");
       } else {
-        res.render("list", {
-          listTitle: "Today",
-          newListItems: foundItems,
-        }),
+        res.render("list", {listTitle: "Today", newListItems: foundItems,
+       }),
           console.log(foundItems);
       }
     });
@@ -177,6 +185,15 @@ async function main() {
 //   res.render("about");
 // });
 
-app.listen(3000, function () {
-  console.log("Server started on port 3000");
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function() {
+  console.log("Server has started Successfully");
 });
+
+// app.listen(3000, function () {
+//   console.log("Server started on port 3000");
+// });
