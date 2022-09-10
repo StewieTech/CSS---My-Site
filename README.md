@@ -19,6 +19,7 @@ My Blog is built with Node.Js, ExpressJs, Javascript, EJS.
 2) Deploy on Heroku
 3) Add a portfolio page within the website
 4) Add A game page within the Website
+5) Finish About Me
 
 
 <h2> Finance Web App </h2>
