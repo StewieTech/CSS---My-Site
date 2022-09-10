@@ -10,7 +10,9 @@ I have three main Projects
 
 <h2> My Blog </h2>
 Currently Located within my EJS challenge folder.
-My Blog is built with Node.Js, Javascript, EJS.
+My Blog is built with Node.Js, ExpressJs, Javascript, EJS.
+
+<a href="https://fast-forest-90327.herokuapp.com/">My Blog Web App Click Here</a>
 
 ** Future Updates **
 1) Connect MongoDB 
