@@ -34,11 +34,16 @@ Web App built with Python, Flask, MySQL
 My First deployed Heroku web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
 <a href="https://vast-plains-87636.herokuapp.com/">My First Heroku Web App Click Here</a>
 
-
 <h2> Todo List </h2>
 
 My first Heroku Web app that's connected to a NoSQL MongoDB backend. Really excited as now my data persists and I can save and store items in my todo list :D. Give it a try below 
 <a href="https://agile-beach-90076.herokuapp.com/">MongoDB To Do List Click Here</a>
+
+** Future Updates **
+1) Click button that opens a new list in a different page
+2) display different tabs of created notes
+3) Register and Login ability to save your notes you have created
+4) possibly recreate in React instead of using EJS
 
 
 
