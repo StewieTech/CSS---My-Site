@@ -6,6 +6,7 @@ I have three main Projects
 1) My Blog
 2) Stock Ticker Lookup Web App 
 3) Newsletter Signup that's Deployed On Heroku
+4) Todo List deployed on Heroku, MongoDB, AWS
 
 <h2> My Blog </h2>
 Currently Located within my EJS challenge folder.
@@ -31,7 +32,15 @@ Web App built with Python, Flask, MySQL
 <h2> Newsletter Signup </h2>
 
 My First deployed Heroku web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
-<a href="https://vast-plains-87636.herokuapp.com/?fbclid=IwAR08qF36XZXBIIu2Zua6UduX0sjp-CqG5NhLqaIgDHVEyfMkQbcuq4Xmwdc">My First Heroku Web App Click Here</a>
+<a href="https://vast-plains-87636.herokuapp.com/">My First Heroku Web App Click Here</a>
+
+
+<h2> Todo List </h2>
+
+My first Heroku Web app that's connected to a NoSQL MongoDB backend. Really excited as now my data persists and I can save and store items in my todo list :D. Give it a try below 
+<a href="https://agile-beach-90076.herokuapp.com/">MongoDB To Do List Click Here</a>
+
+
 
 <h2> Upcoming Timeline's </h2>
 <p>
