@@ -34,7 +34,7 @@ Web App built with Python, Flask, MySQL
 
 <h2> Newsletter Signup </h2>
 
-Currrently located in my Heroku web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
+Currrently located in my "Newsletter-Signup" folder, The Newsletter signup was my first Heroku deployed web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & Javascript. To visit 
 <a href="https://vast-plains-87636.herokuapp.com/">My First Heroku Web App Click Here</a>
 
 <h2> Todo List </h2>
@@ -54,7 +54,7 @@ Currently located in my "/MongoDB/ToDo List v2" folder, my created todo list was
 <p>
 2022 Q4: Deploy my first full stack appication with Node.JS, Javascript, MongoDB
 
-2022 Q4: Learn React
+2022 Q4: Focus on React
 
 2022 Q4: Learn Django, Dive deeper into Containerization with Docker & DevOps specifically around testing
 
@@ -62,7 +62,7 @@ Currently located in my "/MongoDB/ToDo List v2" folder, my created todo list was
 
 2023 Q2: Data Structures with Python: specifically dive into Algorithms by Robert cedrick Fourth edition
   
-2023 Q4: Java Project
+2023 Q4: Java/C++ Project
 </p>
 
 
