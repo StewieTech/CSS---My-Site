@@ -34,7 +34,7 @@ Web App built with Python, Flask, MySQL
 
 <h2> Newsletter Signup </h2>
 
-Currrently located in my Heroku web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
+Currrently located in my "Newsletter-Signup" folder, The Newsletter signup was my first Heroku deployed web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & Javascript. To visit 
 <a href="https://vast-plains-87636.herokuapp.com/">My First Heroku Web App Click Here</a>
 
 <h2> Todo List </h2>
