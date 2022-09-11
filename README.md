@@ -9,7 +9,7 @@ I have three main Projects
 4) Todo List deployed on Heroku, MongoDB, AWS
 
 <h2> My Blog </h2>
-Currently Located within my EJS challenge folder.
+Currently Located within my "Blog Web App" folder.
 My Blog is built with Node.Js, ExpressJs, Javascript, EJS.
 
 <a href="https://fast-forest-90327.herokuapp.com/">My Blog Web App Click Here</a>
@@ -34,12 +34,12 @@ Web App built with Python, Flask, MySQL
 
 <h2> Newsletter Signup </h2>
 
-My First deployed Heroku web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
+Currrently located in my Heroku web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & javascript. To visit 
 <a href="https://vast-plains-87636.herokuapp.com/">My First Heroku Web App Click Here</a>
 
 <h2> Todo List </h2>
+Currently located in my "/MongoDB/ToDo List v2" folder, my created todo list was my first Heroku Web app that's connected to a NoSQL MongoDB Atlas backend. Really excited as now my data persists and I can save and store items in my todo list :D. Give it a try below:
 
-My first Heroku Web app that's connected to a NoSQL MongoDB backend. Really excited as now my data persists and I can save and store items in my todo list :D. Give it a try below 
 <a href="https://agile-beach-90076.herokuapp.com/">MongoDB To Do List Click Here</a>
 
 ** Future Updates **
