@@ -54,7 +54,7 @@ Currently located in my "/MongoDB/ToDo List v2" folder, my created todo list was
 <p>
 2022 Q4: Deploy my first full stack appication with Node.JS, Javascript, MongoDB
 
-2022 Q4: Learn React
+2022 Q4: Focus on React
 
 2022 Q4: Learn Django, Dive deeper into Containerization with Docker & DevOps specifically around testing
 
@@ -62,7 +62,7 @@ Currently located in my "/MongoDB/ToDo List v2" folder, my created todo list was
 
 2023 Q2: Data Structures with Python: specifically dive into Algorithms by Robert cedrick Fourth edition
   
-2023 Q4: Java Project
+2023 Q4: Java/C++ Project
 </p>
 
 
