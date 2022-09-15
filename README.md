@@ -2,11 +2,13 @@
 
 <b> Welcome to my Github Portfolio </b>
 
-I have three main Projects
+I have four main Projects
 1) My Blog
 2) Stock Ticker Lookup Web App 
 3) Newsletter Signup that's Deployed On Heroku
 4) Todo List deployed on Heroku, MongoDB, AWS
+
+A Copy of the Codebase for all of my projects can be found in the "Codebase For Projects" folder.
 
 <h2> My Blog </h2>
 Currently Located within my "Blog Web App" folder.
@@ -20,25 +22,26 @@ My Blog is built with Node.Js, ExpressJs, Javascript, EJS.
 3) Add a portfolio page within the website
 4) Add A game page within the Website
 5) Finish About Me
+6) Fix bug that takes you to the wrong page after clicking title on home page
 
 
 <h2> Finance Web App </h2>
-Located within my Finance folder. This Web App allows a user to register with a password, login to my website, enter a stock ticker which then can be looked up within the IEX cloud API. It pulls back the full name and stock quote. 
+Located within my "Stock Look Up". This Web App allows a user to register with a password, login to my website, enter a stock ticker which then can be looked up within the IEX cloud API. Password's are stored using hash functions to increase security. The API pull the full name and stock price by the user entering the ticker. 
 
 Web App built with Python, Flask, MySQL 
 
 ** Future Updates **
-1) Update Sell function and add ability to look at Portfolio
+1) Update Sell function and add ability to look at Portfolio that is currently stored in MySQL
 2) Deploy on Heroku
 
 
 <h2> Newsletter Signup </h2>
 
-Currrently located in my "Newsletter-Signup" folder, The Newsletter signup was my first Heroku deployed web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & Javascript. To visit 
+Currrently located in my "Newsletter" folder, The Newsletter signup was my first Heroku deployed web app . Using similar logic, I will deploy my other apps on Heroku. The Newsletter is built by connecting to a mailchimp API. Currently it is using HTML, CSS, Bootstrap & Javascript. To visit 
 <a href="https://vast-plains-87636.herokuapp.com/">My First Heroku Web App Click Here</a>
 
 <h2> Todo List </h2>
-Currently located in my "/MongoDB/ToDo List v2" folder, my created todo list was my first Heroku Web app that's connected to a NoSQL MongoDB Atlas backend. Really excited as now my data persists and I can save and store items in my todo list :D. Give it a try below:
+Currently located in my "To Do list" folder, my created todo list was my first Heroku Web app that's connected to a NoSQL MongoDB Atlas backend. Really excited as now my data persists and I can save and store items in my todo list :D. Give it a try below:
 
 <a href="https://agile-beach-90076.herokuapp.com/">MongoDB To Do List Click Here</a>
 
