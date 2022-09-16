@@ -247,5 +247,3 @@ def sell():
     """Sell shares of stock"""
     return apology("TODO")
 
-# API key = pk_82caa2b999f54c56ad83bf7e46409fd2
-# export API_KEY=pk_82caa2b999f54c56ad83bf7e46409fd2
