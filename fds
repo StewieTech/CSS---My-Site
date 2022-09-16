@@ -1,0 +1,205 @@
+[33mcommit 69a57db95f9c3822a3dede42bbd2e76863937632[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Fri Sep 16 16:02:57 2022 -0400
+
+    Update app.py
+
+[33mcommit 2b7a0f2bd1f20dca82e5a66b8175b066c6f9701d[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Fri Sep 16 16:02:24 2022 -0400
+
+    Update app.js
+
+[33mcommit 9f28080251a2f49a6e5e0f1958c72a736732ce26[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Fri Sep 16 15:55:58 2022 -0400
+
+    added hello.html
+
+[33mcommit ed9f76c91d30e32e3f15a2a3ca4b157952f80bb4[m
+Merge: acbb870 e2cb41b
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Thu Sep 15 09:01:56 2022 -0400
+
+    Merge branch 'master' of https://github.com/flystewie/CSS---My-Site
+
+[33mcommit acbb870f4ca455a1fa87371089824c6c6b66f394[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Thu Sep 15 09:01:51 2022 -0400
+
+    finally have project codebase accesible within Codebase folder
+
+[33mcommit e2cb41bf0155e5da85494f9692e4f7b6860af102[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Thu Sep 15 09:00:58 2022 -0400
+
+    Update README.md
+
+[33mcommit 61578f16b8908c792916cf95c4afdf5d5f434d05[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Thu Sep 15 08:53:30 2022 -0400
+
+    testing codebase folder
+
+[33mcommit 608a53ac0b4003eb76019f8a2566815d860c42d2[m
+Merge: 8fca323 08f26c6
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Sun Sep 11 13:11:01 2022 -0400
+
+    Merge branch 'master' of https://github.com/flystewie/CSS---My-Site
+
+[33mcommit 8fca323a0ae8ee2efee4d75898c4a3c1a0652bfd[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Sun Sep 11 13:10:54 2022 -0400
+
+    WebBlog to MongDB atlas
+
+[33mcommit 08f26c6a69f559d126b7afbc1b157c7f5a2f4454[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 11 11:40:38 2022 -0400
+
+    Update README.md
+
+[33mcommit ad0a120714fa65be057b4f6c7aaf1d141652b56f[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 11 11:39:59 2022 -0400
+
+    Update README.md
+
+[33mcommit 56ae99ee726a006c44c25e1f384d764e364240c7[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 11 11:38:14 2022 -0400
+
+    Update README.md
+
+[33mcommit 0d782bd64ab11e4f7c3879393ec51e247a04a2ed[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Sun Sep 11 11:30:30 2022 -0400
+
+    update folder names
+
+[33mcommit c97434f2048b2f3f4c64c6293287ad76642b4790[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sat Sep 10 15:09:21 2022 -0400
+
+    Update README.md
+
+[33mcommit 4734a0561deccc7eddb2f3866cc0baa18efec68b[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sat Sep 10 14:56:34 2022 -0400
+
+    Update README.md
+
+[33mcommit 4a66df03699c05652215663c9e9fd456bb1ce56e[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Sat Sep 10 14:21:26 2022 -0400
+
+    FINISHED TO DO LIST !!!
+
+[33mcommit c3295ab6758beb8450506d0f08db928519a4fd49[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sat Sep 10 14:05:41 2022 -0400
+
+    Update README.md
+
+[33mcommit 9dabc6cfeb48152944da0f31a8f04789c8ccd1c1[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sat Sep 10 13:12:11 2022 -0400
+
+    Update README.md
+
+[33mcommit 1473b4ebd3d6cfc8f82f9f0ff0a89e27f694d5b6[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Sat Sep 10 09:56:46 2022 -0400
+
+    Updating Mongo
+
+[33mcommit c052ace21000a7c82e362946ab7bf80f4b0628cc[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Sun Sep 4 15:05:07 2022 -0400
+
+    ToDo List using MongoDB
+
+[33mcommit b9624867123109d5ce3724589f33e6709db00b91[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 4 13:01:05 2022 -0400
+
+    Update README.md
+
+[33mcommit 329accf7d8d777884fc1c72049d05e4ab45b9d25[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 4 13:00:37 2022 -0400
+
+    Update README.md
+
+[33mcommit aad247557d2275273a01d3b67e571338537e920b[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 4 12:30:10 2022 -0400
+
+    Update README.md
+
+[33mcommit 1b5b69724f08678b9d581668a707689b29ad1518[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 4 12:29:32 2022 -0400
+
+    Update README.md
+
+[33mcommit f51888ce1048537cc486c4e44c441418a45f5b64[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 4 12:25:50 2022 -0400
+
+    Update README.md
+
+[33mcommit 39029e199ad426817de443a216219512e130b429[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Sun Sep 4 12:13:05 2022 -0400
+
+    Update README.md
+
+[33mcommit cb0450a53f0f525ced04ec349c9eec468e2668d7[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Sun Sep 4 12:06:14 2022 -0400
+
+    finished MongoDB
+
+[33mcommit 148067465b647485c22f0df84ef2252ccaa65aa6[m
+Author: Errol Stewart <Errol.F.Stewart@gmail.com>
+Date:   Fri Sep 2 15:26:30 2022 -0400
+
+    Create README.md
+
+[33mcommit 1ac8b102bb3d8dd1d30de3b3fd574da76f5bb3c4[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Fri Sep 2 14:51:41 2022 -0400
+
+    Updating Mongoose
+
+[33mcommit e6837179eb325ac21720562031707cf061ed013e[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Fri Sep 2 05:52:44 2022 -0400
+
+    Deploy to Web
+
+[33mcommit a19bd638f1848b6af950c564b187b6d49b3bd97c[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Thu Sep 1 21:28:18 2022 -0400
+
+     Finance web app update
+
+[33mcommit 9deecbc9f8ecf10d60c1e4b5eea9330dd3025629[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Thu Sep 1 21:15:19 2022 -0400
+
+    added Finance Website
+
+[33mcommit c69580735c1f917ddaf31042c0d436cfa066415f[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Thu Sep 1 20:17:00 2022 -0400
+
+    Added MongoDb
+
+[33mcommit 8f20d37c559d0a949c2d16caa6104a963ff35ecf[m
+Author: flystewie <77213085+flystewie@users.noreply.github.com>
+Date:   Thu Sep 1 19:22:54 2022 -0400
+
+    My First Commit
