@@ -84,8 +84,6 @@ app.listen(process.env.PORT || 3000, function() {
     console.log("listening on port 3000");
 });
 
-// apiKey
-// c24891e67b093c69566809365d16c099-us11
 
 // list id 
 // 8c74df818e
