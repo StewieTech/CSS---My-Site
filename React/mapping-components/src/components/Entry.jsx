@@ -3,24 +3,21 @@ import React from "react"
 function Entry(props) { 
     return (
         <div>
-         <h1>
-        <span>emojipedia</span>
-      </h1>
-
+   
       <dl className="dictionary">
         <div className="term">
           <dt>
             <span className="emoji" role="img" aria-label="Tense Biceps">
-              💪
+              {props.emoji}
             </span>
-            <span>Tense Biceps</span>
+            <span>{props.name}</span>
           </dt>
           <dd>
-            “You can do that!” or “I feel strong!” Arm with tense biceps. Also
-            used in connection with doing sports, e.g. at the gym.
+            {props.detail}
           </dd>
         </div>
-        <div className="term">
+
+        {/* <div className="term">
           <dt>
             <span className="emoji" role="img" aria-label="Tense Biceps">
               🙏
@@ -32,8 +29,9 @@ function Entry(props) {
             prayer, or hoping for enlightenment. Is also used as a “high five”
             or to say thank you.
           </dd>
-        </div>
-        <div className="term">
+        </div> */}
+        
+        {/* <div className="term">
           <dt>
             <span className="emoji" role="img" aria-label="Tense Biceps">
               🤣
@@ -45,7 +43,7 @@ function Entry(props) {
             face is laughing boundlessly. The emoji version of “rofl“. Stands
             for „rolling on the floor, laughing“.
           </dd>
-        </div>
+        </div> */}
       </dl>
 
 
