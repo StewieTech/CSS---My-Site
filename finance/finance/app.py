@@ -51,7 +51,8 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return apology("Show portfolio of Stocks here")
+    return apology("Click Buy in the top menu")
+    # return apology("Show portfolio of Stocks here")
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -249,3 +250,7 @@ def sell():
 
 # API key = pk_82caa2b999f54c56ad83bf7e46409fd2
 # export API_KEY=pk_82caa2b999f54c56ad83bf7e46409fd2
+# set API_KEY=pk_82caa2b999f54c56ad83bf7e46409fd2
+# py -m venv env
+# env\Scripts\activate
+# FLASK_ENV = development
