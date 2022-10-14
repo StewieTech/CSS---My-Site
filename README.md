@@ -34,7 +34,7 @@ Web App built with Python, Flask, MySQL
 
 ** Future Updates **
 1) Update Sell function and add ability to look at Portfolio that is currently stored in MySQL
-<s> 2) Deploy on Heroku <s>
+2) <s>  Deploy on Heroku </s>
 
 
 <h2> Newsletter Signup </h2>
