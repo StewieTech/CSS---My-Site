@@ -28,7 +28,6 @@ My Blog is built with Node.Js, ExpressJs, Javascript, EJS.
 <h2> Finance Web App </h2>
 Located within my "Stock Look Up". This Web App allows a user to register with a password, login to my website, enter a stock ticker which then can be looked up within the IEX cloud API. Password's are stored using hash functions to increase security. The API pulls the full name and stock price by the user entering the ticker. Click the link below to test it out:
 
-https://stewart-stock-lookup.herokuapp.com/
 <a href="https://stewart-stock-lookup.herokuapp.com/">Stock Symbol Lookup</a>
 
 Web App built with Python, Flask, MySQL 
