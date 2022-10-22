@@ -49,17 +49,29 @@
 
 # print(factorial(10))
 
-def fib(n):
-    count = 0
-    if n <= 1:
-        return n
+# def fib(n):
+#     count = 0
+#     if n <= 1:
+#         return n
     
-    else:
-        print(n)
-        return fib(n-2) + fib(n-1)
+#     else:
+#         print(n)
+#         return fib(n-2) + fib(n-1)
 
-fib(10)
+# fib(10)
 
-    
+def eda_bit(start, end):
+    lst = []
+    for x in range(start, end +1):
+        if x % 15 == 0:
+            lst.append("EdaBit")
+        elif x % 5 == 0:
+            lst.append("Bit")
+        elif x % 3 == 0:
+            lst.append("Eda")
+            print(lst)
+        else:
+            lst.append(x)
+    return lst
     
 
