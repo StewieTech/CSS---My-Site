@@ -14,7 +14,25 @@
 # print(lst)
 
 
-def count_ones(num):
-	return bin(num).count('1')
+# def count_ones(num):
+# 	return bin(num).count('1')
 
+# def mean(num):
+# 	numList = map(int, str(num))
+# 	print(numList)
+# 	numSum = sum(numList)
+# 	numLength = len(numList)
+# 	print(numLength)
+# 	return  num
+
+# mean(532)
+	
+import math
+
+def cars_needed(n):
+	cars = n /5
+	carsRound = math.floor(cars)
+	return carsRound
+
+print(cars_needed(11))
 		
