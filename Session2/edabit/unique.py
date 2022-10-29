@@ -95,28 +95,90 @@ numbers = [1,1,3]
 
 # print(solve_for_exp(4, 1024))
 
-# mRNA = {
-# "A":"U", 
-# "T":"A", 
-# "G":"C",
-# "C":"G"
-# }
+mRNA = {
+"A":"U", 
+"T":"A", 
+"G":"C",
+"C":"G"
+}
 
 
 # def dna_to_rna(dna):
 # 	for strand in dna:
 # 		if 
 
-dna = "ATGC"
-rna = "UACG"
+# dna = "ATGC"
+# rna = "UACG"
 
 test = "GCGTAC"
-test2 = test.translate(test.maketrans(dna,rna))
+# test2 = test.translate(test.maketrans(dna,rna))
 
-translation = test.maketrans(dna, rna)
-print(test.translate(translation))
-print(test.translate(test.maketrans(dna,rna)))
-for k, v in translation.items():
-    print(k, v)
-print(test2)
+# translation = test.maketrans(dna, rna)
+# print(test.translate(translation))
+# print(test.translate(test.maketrans(dna,rna)))
+# for k, v in translation.items():
+#     print(k, v)
+# print(test2)
+# # def dna_to_rna(dna):
+
+dna = "ATG"
+rna = "UAC"
+def dna_to_rna(dna):
+    translation = dna.maketrans(mRNA)
+    return dna.translate(translation)
+
+print(dna_to_rna(test))
+
+# def dna_to_rna (dna):
+# 	dic = {'A': 'U', 'T': 'A', 'G': 'C', 'C': 'G'}
+# 	return ''.join([dic[char] for char in dna if char in dic])
+
 # def dna_to_rna(dna):
+# 	dic={	
+# 		"A":"U", "T":"A", "G":"C", "C":"G"
+# 	}
+# 	s=""
+# 	for i in dna:
+# 		if i in dic:
+# 			s+=dic[i]
+# 	return s
+
+numbers = [[11, 12], [18, 13], [4, 5]]
+numbers2 = [[36, 4], [22, 60]] # 9
+numbers4 = [[-11, 12], [18, 13], [4, 5]] #, 1)
+# Test.assert_equals(sum_fractions([[11, 12], [18, 13], [4, 5]]), 3)
+numbers5 = [[11, 2], [3, 4], [5, 4], [21, 11], [12, 6]] # 11
+numbers3 = [[18, 13], [4, 5]]  #2)
+
+def sum_fractions(lst):
+        newlist = [round(num[0]/num[1])for num in lst]
+        if 0 in newlist:
+            newlist.remove(0)
+        print(newlist)
+
+
+   
+        
+        counter = 0
+        print(counter)
+        i = 0
+
+        if len(newlist) > 1:
+            for i in range(len(newlist)):
+                
+                # print(newlist[i])
+                counter += newlist[i+i]
+                print("this is a count: ", counter)
+        
+
+            return counter
+        return newlist[0]
+
+print(sum_fractions(numbers5))
+
+        # while i < len(newlist):
+        #     counter += newlist[i]
+        #     print("this is a count: ", counter)
+             # print(len(newlist))
+        # print(newlist)
+   
