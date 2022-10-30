@@ -188,18 +188,29 @@ lst = ["Google", "Apple", "Microsoft"]
 #     def sum_fractions(lst):
 # 	return int(sum([i[0] / i[1] for i in lst]))
 
-def find_letters(word):
-    lst = []
-    for letter in word:
-        if letter not in lst:
-            lst.append(letter)
+# def find_letters(word):
+#     lst = []
+#     for letter in word:
+#         if letter not in lst:
+#             lst.append(letter)
             
-    for letter in lst:
-        if word.count(letter) > 1:
-            lst.remove(letter)
+#     for letter in range(len(lst)):
+#         if word.count(letter) > 1:
+#             print(word.count(letter))
+#             lst.remove(letter)
 
-    return lst
+#     return lst
 
+# def find_letters(word):
+#     lst = []
+#     for letter in word:
+#         if word.count(letter) == 1:
+#             lst.append(letter)
+#     return lst
+
+# [i 
+# for i in x 
+# if x.count(i) == 1]
 
 # test = "monopoly"
 # for letter in test:
@@ -219,4 +230,27 @@ def find_letters(word):
 # def find_letters(word):
 # 	return [].append(letter[0] for letter in word)
 
-print(find_letters("ballon"))
+# print(find_letters("ballon"))
+
+# def is_palindrome(txt):
+#     for letter in range(len(txt)):
+#         print(txt[-1])
+#         if txt[0] == txt[-1]:
+            
+#             return True
+#         else:
+#             return False
+
+# print(is_palindrome("scary"))
+
+import math
+
+def next_square(n):
+	if math.sqrt(n).is_integer() == False:
+		return None
+	else:
+		next = (math.sqrt(n) + 1) ** 2
+		return next
+
+print(next_square(121))
+# print(math.sqrt(122).is_integer())
