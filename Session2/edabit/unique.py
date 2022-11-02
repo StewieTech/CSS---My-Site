@@ -243,14 +243,24 @@ lst = ["Google", "Apple", "Microsoft"]
 
 # print(is_palindrome("scary"))
 
-import math
+# import math
 
-def next_square(n):
-	if math.sqrt(n).is_integer() == False:
-		return None
-	else:
-		next = (math.sqrt(n) + 1) ** 2
-		return next
+# def next_square(n):
+# 	if math.sqrt(n).is_integer() == False:
+# 		return None
+# 	else:
+# 		next = (math.sqrt(n) + 1) ** 2
+# 		return next
 
-print(next_square(121))
-# print(math.sqrt(122).is_integer())
+# print(next_square(121))
+# # print(math.sqrt(122).is_integer())
+
+lst = [118,117,120]
+
+def num_to_dict(lst):
+	dict = {}
+	for num in lst:
+		dict[num] = chr(num)
+	return dict
+
+print(num_to_dict(lst))
