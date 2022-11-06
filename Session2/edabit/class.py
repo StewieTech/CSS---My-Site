@@ -65,19 +65,31 @@
 # print(Magic.replace("AzErty-QwErty", 'E','e'))
 
 
-class Magic:
-	def replace(self, text, c1, c2):
-		return text.replace(c1, c2)
+# class Magic:
+# 	def replace(self, text, c1, c2):
+# 		return text.replace(c1, c2)
 	
-	def str_length(self, text):
-		return len(text)
+# 	def str_length(self, text):
+# 		return len(text)
 	
-	def trim(self, text):
-		return text.strip()
+# 	def trim(self, text):
+# 		return text.strip()
 	
-	def list_slice(self, element, index):
-		x = element[index[0]-1:index[1]]
-		if x == []:
-			return -1
-		else:
-			return x
+# 	def list_slice(self, element, index):
+# 		x = element[index[0]-1:index[1]]
+# 		if x == []:
+# 			return -1
+# 		else:
+# 			return x
+
+def print_list(n):
+# result, i = [], 1
+    result = []
+    i = 1
+    # while i <= n:
+    for i in range(n+1):
+        result += [i]
+    result.remove(0)
+    return result
+
+print(print_list(5))

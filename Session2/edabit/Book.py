@@ -60,8 +60,8 @@
 	
 # print(paths(4))
 
-a = 100
-b = 200
+# a = 100
+# b = 200
 
 
 # def swap(a, b):
@@ -105,15 +105,35 @@ b = 200
 
 # print(char_count(txt1, txt2))
 
-txt = "mubashir"
-def even_odd_string(txt):
-	evenlst, oddlst = '',''
-	for i in range(len(txt)):
-		if i % 2 == 0:
-			evenlst = evenlst + txt[i]
-		else:
-			oddlst = oddlst + txt[i]
-	return evenlst
+# txt = "mubashir"
+# def even_odd_string(txt):
+# 	evenlst, oddlst = '',''
+# 	for i in range(len(txt)):
+# 		if i % 2 == 0:
+# 			evenlst = evenlst + txt[i]
+# 		else:
+# 			oddlst = oddlst + txt[i]
+# 	return evenlst
 
 
-print(even_odd_string(txt))
+# print(even_odd_string(txt))
+
+test = "Errol"
+
+# def mumbling(s):
+# 	for k,v in s:
+# 		# Two = int() * (k - 1)
+# 		return k , v
+
+def mumbling(s):
+	return ''.join(c.upper() + c.lower() * i for i, c in enumerate(s))
+
+
+# def mumbling(s):
+#     res = ""
+#     for i in range(len(s)):
+#         res += s[i].upper() + s[i].lower() * i + "-"
+#     return res[:-1]
+
+print(mumbling(test))
+
