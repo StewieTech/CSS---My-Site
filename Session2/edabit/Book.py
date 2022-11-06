@@ -118,22 +118,49 @@
 
 # print(even_odd_string(txt))
 
-test = "Errol"
+# test = "Errol"
+
+# # def mumbling(s):
+# # 	for k,v in s:
+# # 		# Two = int() * (k - 1)
+# # 		return k , v
 
 # def mumbling(s):
-# 	for k,v in s:
-# 		# Two = int() * (k - 1)
-# 		return k , v
-
-def mumbling(s):
-	return ''.join(c.upper() + c.lower() * i for i, c in enumerate(s))
+# 	return ''.join(c.upper() + c.lower() * i for i, c in enumerate(s))
 
 
-# def mumbling(s):
-#     res = ""
-#     for i in range(len(s)):
-#         res += s[i].upper() + s[i].lower() * i + "-"
-#     return res[:-1]
+# # def mumbling(s):
+# #     res = ""
+# #     for i in range(len(s)):
+# #         res += s[i].upper() + s[i].lower() * i + "-"
+# #     return res[:-1]
 
-print(mumbling(test))
+# print(mumbling(test))
 
+# def fizz_buzz(num):
+# 	int = 1
+# 	final = []
+# 	for i in range(1, num + 1):
+# 		if i % 15 == 0:
+# 			final.append("FizzBuzz")
+# 		elif i % 3 == 0: 
+# 			final.append("Fizz")
+# 		elif i % 5 == 0: 
+# 			final.append("Buzz")
+# 		else:
+# 			final.append(str(i))
+
+# 	return final
+
+def fizz_buzz(num):
+	for i in range(1, num + 1):
+		if i % 15 == 0:
+			return "FizzBuzz"
+		if i % 3 == 0: 
+			return "Fizz"
+		if i % 5 == 0: 
+			return "Buzz"
+		else:
+			return num
+
+print(fizz_buzz(15))
