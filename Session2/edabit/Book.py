@@ -135,7 +135,7 @@
 # #         res += s[i].upper() + s[i].lower() * i + "-"
 # #     return res[:-1]
 
-# print(mumbling(test))
+# # print(mumbling(test))
 
 # def fizz_buzz(num):
 # 	int = 1
@@ -152,15 +152,74 @@
 
 # 	return final
 
-def fizz_buzz(num):
-	for i in range(1, num + 1):
-		if i % 15 == 0:
-			return "FizzBuzz"
-		if i % 3 == 0: 
-			return "Fizz"
-		if i % 5 == 0: 
-			return "Buzz"
-		else:
-			return num
+# def fizz_buzz(num):
+# 		if num % 15 == 0:
+# 			return str("FizzBuzz")
+# 		if num % 3 == 0: 
+# 			return "Fizz"
+# 		if num % 5 == 0: 
+# 			return "Buzz"
+# 		else:
+# 			return str(num)
 
-print(fizz_buzz(15))
+# print(fizz_buzz(98))
+
+# def fizz_buzz(num):
+# 	return "Fizz"*(num%3==0) + "Buzz"*(num%5==0) or str(num)
+
+# lst = [3, 5, 4, 2] # 3
+# lst = [50, 20, 80, 90, 100, 60, 30, 50, 80, 60] # 0
+# lst = [35, 23, 40, 21, 38] # -1
+
+# def find_a_seat(n, lst):
+# 	ntarget = (n / len(lst)) * 0.5
+# 	print(ntarget)
+# 	for k,v in enumerate(lst):
+# 		if v <= ntarget:
+# 			return k
+# 	return -1
+
+# print(find_a_seat(200, lst))
+
+
+# def find_a_1964
+
+scores = {"A": 100, "B": 14, "C": 9, "D": 28, "E": 145, "F": 12, "G": 3,
+          "H": 10, "I": 200, "J": 100, "K": 114, "L": 100, "M": 25,
+          "N": 450, "O": 80, "P": 2, "Q": 12, "R": 400, "S": 113, "T": 405,
+          "U": 11, "V": 10, "W": 10, "X": 3, "Y": 210, "Z": 23}
+
+test = "BBBB"
+
+
+
+# def name_score(name):
+# 	new_list = []
+# 	count = 0
+# 	# for k,v in enumerate(scores):
+# 	for k,v in scores.items():
+# 		print(k)
+# 		for letter in name:
+# 			print(letter)
+# 			if letter == k:
+# 				# count += scores[v]
+# 				new_list.append(v)
+# 		count = sum(new_list)
+# 		print(new_list)
+# 		if count <= 60: return "NOT TOO GOOD"
+# 		elif 61 <= count <= 300: return "PRETTY GOOD"
+# 		elif 301 <= count <= 599: return "VERY GOOD"
+
+# 		else: return "THE BEST"
+def name_score(name):	
+	count = sum(scores[i] for i in name)
+
+
+	if count <= 60: return "NOT TOO GOOD"
+	elif 61 <= count <= 300: return "PRETTY GOOD"
+	elif 301 <= count <= 599: return "VERY GOOD"
+
+	else: return "THE BEST"
+
+
+print(name_score(test))
