@@ -250,11 +250,31 @@ test = "BBBB"
 
 # print(print_list(6))
 
-def nothing_is_nothing(*args):
-	list = [args]
-	answer = all(list)
-	if answer == True:
-		return answer
-	return False
+# def nothing_is_nothing(*args):
+# 	list = [args]
+# 	answer = all(list)
+# 	if answer == True:
+# 		return answer
+# 	return False
 
-print(nothing_is_nothing(33, 'Hello'))
+# print(nothing_is_nothing(33, 'Hello'))
+
+# lst = [0, 4, 19, 34, 50, -9, 2]
+
+# def last_ind(lst):
+# 	for item in lst:
+# 		return lst[-1]
+
+# print(last_ind(lst))
+
+# def last_ind(lst):
+# 	return lst[-1] if lst else None
+
+def fifty_thirty_twenty(ati):
+	dict = {}
+	dict["Needs"] = ati * 0.5 
+	dict["Wants"] = ati * 0.3
+	dict["Savings"] = ati * 0.2
+	return dict
+
+print(fifty_thirty_twenty(10000))
