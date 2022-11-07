@@ -210,16 +210,51 @@ test = "BBBB"
 # 		elif 61 <= count <= 300: return "PRETTY GOOD"
 # 		elif 301 <= count <= 599: return "VERY GOOD"
 
-# 		else: return "THE BEST"
-def name_score(name):	
-	count = sum(scores[i] for i in name)
+# # 		else: return "THE BEST"
+# def name_score(name):	
+# 	count = sum(scores[i] for i in name)
 
 
-	if count <= 60: return "NOT TOO GOOD"
-	elif 61 <= count <= 300: return "PRETTY GOOD"
-	elif 301 <= count <= 599: return "VERY GOOD"
+# 	if count <= 60: return "NOT TOO GOOD"
+# 	elif 61 <= count <= 300: return "PRETTY GOOD"
+# 	elif 301 <= count <= 599: return "VERY GOOD"
 
-	else: return "THE BEST"
+# 	else: return "THE BEST"
 
 
-print(name_score(test))
+# print(name_score(test))
+# from itertools import count
+
+# def doubleton(n):
+# 	return next(n for n in count(n) if len(set(str(n))) == 2)
+
+# print(doubleton(12))
+
+# def doubleton(n):
+# 	n+=1
+# 	while len(set(str(n)))!=2:
+# 		n+=1
+# 	return n
+
+# def is_same_num(num1, num2):
+# 	if num1 == num2: 
+# 		True
+# 	else: 
+# 		False
+
+# def print_list(n):
+# 	lst = []
+# 	for num in range(1, n+1):
+# 		lst.append(num)
+# 	return lst
+
+# print(print_list(6))
+
+def nothing_is_nothing(*args):
+	list = [args]
+	answer = all(list)
+	if answer == True:
+		return answer
+	return False
+
+print(nothing_is_nothing(33, 'Hello'))
