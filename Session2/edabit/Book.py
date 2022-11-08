@@ -270,11 +270,80 @@ test = "BBBB"
 # def last_ind(lst):
 # 	return lst[-1] if lst else None
 
-def fifty_thirty_twenty(ati):
-	dict = {}
-	dict["Needs"] = ati * 0.5 
-	dict["Wants"] = ati * 0.3
-	dict["Savings"] = ati * 0.2
-	return dict
+# def fifty_thirty_twenty(ati):
+# 	dict = {}
+# 	dict["Needs"] = ati * 0.5 
+# 	dict["Wants"] = ati * 0.3
+# 	dict["Savings"] = ati * 0.2
+# 	return dict
 
-print(fifty_thirty_twenty(10000))
+# print(fifty_thirty_twenty(10000))
+
+# def fifty_thirty_twenty(ati):
+# 	return {
+# 		'Needs'  : 0.5 * ati,
+# 		'Wants'  : 0.3 * ati,
+# 		'Savings': 0.2 * ati,
+# 	}
+
+# def fifty_thirty_twenty(ati):
+#     a = [(ati * 1/2), (ati * 3/10), (ati * 1/5)]
+#     b = ["Needs", "Wants", "Savings"]
+#     return dict(zip(b, a))
+
+# pl = ["Annie", "Steven", "Lisa", "Osman"]
+# jl = ["Teacher", "Engineer", "Doctor", "Cashier"]
+
+# def assign_person_to_job(names, jobs):
+# 	return dict(zip(names, jobs))
+
+# print(assign_person_to_job(pl,jl))
+
+# def assign_person_to_job(pl, jl):
+# 	return {p:j for p,j in zip(pl,jl)}
+
+# 	def assign_person_to_job(pl, jl):
+# 	a={}
+# 	for i in range (len(pl)):
+# 		a.update({pl[i]:jl[i]})
+# 	return a
+
+# lst = [3, 4, 9]
+
+# def even_odd_transform(lst, n):
+# 	newlst = []
+# 	count = 1
+# 	while count <= n:
+# 		count += 1
+# 		# print(count)
+# 		# print(n)
+# 		for item in lst:
+			
+# 			print(item)
+			
+# 			if item % 2 == 0:
+# 				lst[0] = lst[0] -  2
+# 				lst[1] -=  lst[1] -  2
+# 				lst[2] -=  lst[2] -  2
+# 			else: 
+# 				lst[0] +=  2
+# 				lst[1] +=  2
+# 				lst[2] +=  2
+				
+
+# 				# newlst.append(item + 2)
+# 	return lst
+
+# print(even_odd_transform(lst, 3))
+
+# def even_odd_transform(lst, n):
+#   return [i+(n*2) if i%2 else i-(n*2) for i in lst]
+
+#   def even_odd_transform(lst, n):
+# 	c=[]
+# 	for i in lst:
+# 		if i%2==0:
+# 			c.append(i-2*n)
+# 		else:
+# 			c.append(i+2*n)
+# 	return c
