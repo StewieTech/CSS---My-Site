@@ -379,24 +379,59 @@ test = "BBBB"
 
 # print(leap_year(2000))
 
-test = "4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"
+# test = "4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"
 # test1 = test.split()
 # test12 = 
 # test2 = sorted(test12)
 # print(test2)
 
-def high_low(txt):
+# def high_low(txt):
 	
-	# next = sorted(list(txt.replace(" ", "")))
-	next2 = txt.split()
-	next1 = list(map(lambda x: int(x), next2 ))
-	next = sorted(next1)
+# 	# next = sorted(list(txt.replace(" ", "")))
+# 	next2 = txt.split()
+# 	next1 = list(map(lambda x: int(x), next2 ))
+# 	next = sorted(next1)
 
-	# return "".join(next[0] + next[-1])
-	return  str(next[-1])  + " " + str(next[0])
+# 	# return "".join(next[0] + next[-1])
+# 	return  str(next[-1])  + " " + str(next[0])
 
-print(high_low(test))
+# print(high_low(test))
 
 # def high_low(txt):
 #   a=list(map(int, txt.split()))
 #   return "{} {}".format(max(a), min(a))
+
+# def high_low(txt):
+# 	num_list = [int(num) for num in txt.split()]
+# 	return "{} {}".format(max(num_list), min(num_list))
+
+alphabet = [chr(value) for value in range(65,91)]
+# print(alphabet)
+
+numbers = [num for num in range(0, 26 + 1)]
+# print(numbers)
+
+dictionary = dict(zip(alphabet, numbers))
+# print(dictionary)
+
+def alpha_num(txt):
+	string = ""
+	# new = txt.split()
+	# print(new)
+	for letter in (txt):
+		string += str(dictionary.get(letter)) + " "
+	return string[:-1]
+	
+
+
+
+print(alpha_num("XYZ"))
+
+
+
+# def alph_num(txt):
+# 	x=''
+# 	alphabet={'A':0,'B':1,'C':2,'D':3,'E':4,'F':5,'G':6,'H':7,'I':8,'J':9,'K':10,'L':11,'M':12,'N':13,'O':14,'P':15,'Q':16,'R':17,'S':18,'T':19,'U':20,'V':21,'W':22,'X':23,'Y':24,'Z':25}
+# 	for i in txt:
+# 		x+=str(alphabet[i])+' '
+# 	return x[:-1]
