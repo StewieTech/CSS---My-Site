@@ -369,12 +369,34 @@ test = "BBBB"
 
 # print(result)
 
-def leap_year(year):
-	if year % 100 == 0 and year % 400 != 0:
-		return False
-	elif year % 4 == 0:
-		return True
-	else:
-		return False
+# def leap_year(year):
+# 	if year % 100 == 0 and year % 400 != 0:
+# 		return False
+# 	elif year % 4 == 0:
+# 		return True
+# 	else:
+# 		return False
 
-print(leap_year(2000))
+# print(leap_year(2000))
+
+test = "4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"
+# test1 = test.split()
+# test12 = 
+# test2 = sorted(test12)
+# print(test2)
+
+def high_low(txt):
+	
+	# next = sorted(list(txt.replace(" ", "")))
+	next2 = txt.split()
+	next1 = list(map(lambda x: int(x), next2 ))
+	next = sorted(next1)
+
+	# return "".join(next[0] + next[-1])
+	return  str(next[-1])  + " " + str(next[0])
+
+print(high_low(test))
+
+# def high_low(txt):
+#   a=list(map(int, txt.split()))
+#   return "{} {}".format(max(a), min(a))
