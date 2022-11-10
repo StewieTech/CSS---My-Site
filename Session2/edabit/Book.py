@@ -347,3 +347,34 @@ test = "BBBB"
 # 		else:
 # 			c.append(i+2*n)
 # 	return c
+
+# b = 2
+# c = 5
+# a = 0
+
+# a = b + c
+# c = a - b
+# c = c+ a
+# c = b + c
+# b = a + c
+# print(a,b,c)
+
+
+# x = 2
+# x = x + 5
+# result = x * 3
+# result = result - 6
+# result = result / 4
+# result = result + x
+
+# print(result)
+
+def leap_year(year):
+	if year % 100 == 0 and year % 400 != 0:
+		return False
+	elif year % 4 == 0:
+		return True
+	else:
+		return False
+
+print(leap_year(2000))
