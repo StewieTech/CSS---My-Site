@@ -511,3 +511,43 @@ test = "BBBB"
 # def count_all(txt):
 # 	return {"LETTERS": sum(c.isalpha() for c in txt),
 # 	        "DIGITS": sum(c.isdigit() for c in txt)}
+
+# test = [-1, 3, 5, 6, 99, 12, 2]
+# test= [1, 2, 3, 4, 5, 6]
+
+# def find_highest(lst):
+# 		newlst = sorted(lst)
+
+
+
+# 		return newlst[-1]
+
+# print(find_highest(test))
+
+# def sum_odd_and_even(lst):
+# 	even = 0
+# 	odd = 0
+# 	for item in lst:
+# 		if item % 2 == 0 : even += item
+# 		if item % 2 == 1 : odd += item
+# 	return [even, odd]
+
+# print(sum)
+
+
+	# return [sum(e for e in lst if e%2==i) for i in [0,1]]
+	
+# 'cristian', 'Cristina'
+
+# def is_anagram(s1, s2):
+# 	# news1 = s1.split(' ' )
+# 	# news2 = s2.split()
+# 	news1 = sorted([letter.lower() for letter in s1])
+# 	news2 = sorted([letter.lower() for letter in s2])
+# 	return news1 == news2
+
+# print(is_anagram('cristian', 'Cristina'))
+
+# Follow
+# def is_anagram(s1, s2):
+#   return(sorted(s1.lower()) == sorted(s2.lower()))
