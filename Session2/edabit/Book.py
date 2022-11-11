@@ -405,27 +405,28 @@ test = "BBBB"
 # 	num_list = [int(num) for num in txt.split()]
 # 	return "{} {}".format(max(num_list), min(num_list))
 
-alphabet = [chr(value) for value in range(65,91)]
-# print(alphabet)
+# alphabet = [chr(value) for value in range(65,91)]
+# # print(alphabet)
 
-numbers = [num for num in range(0, 26 + 1)]
-# print(numbers)
+# numbers = [num for num in range(0, 26 + 1)]
+# # print(numbers)
 
-dictionary = dict(zip(alphabet, numbers))
-# print(dictionary)
+# dictionary = dict(zip(alphabet, numbers))
+# # print(dictionary)
 
-def alpha_num(txt):
-	string = ""
-	# new = txt.split()
-	# print(new)
-	for letter in (txt):
-		string += str(dictionary.get(letter)) + " "
-	return string[:-1]
+# def alpha_num(txt):
+# 	string = ""
+# 	# new = txt.split()
+# 	# print(new)
+# 	for letter in (txt):
+# 		string += str(dictionary.get(letter)) + " "
+# 	return string[:-1]
 	
 
 
 
-print(alpha_num("XYZ"))
+# print(alpha_num("XYZ"))
+
 
 
 
@@ -435,3 +436,78 @@ print(alpha_num("XYZ"))
 # 	for i in txt:
 # 		x+=str(alphabet[i])+' '
 # 	return x[:-1]
+
+# dict = {
+#   "Student 1" : "Steve",
+#   "Student 2" : "Becky",
+#   "Student 3" : "John"
+# }
+
+# def get_student_names(students):
+# 	lst = [students[i] for i in students]
+# 	return sorted(lst)
+
+	# def get_student_names(students):
+	# names = [name for num, name in students.items()]
+	# return sorted(names)
+
+# def get_student_names(students):
+# 	return sorted(students.values())
+
+
+# print(get_student_names(dict))
+
+
+
+# test = "100101"
+
+# def integer_boolean(n):
+# 	return list(map(lambda x: int(x) == 1, n))
+	
+# print(integer_boolean(test))
+# test = ["Bob", "Nathan", "Hayden"]
+
+# def find_bob(names):
+# 	for k, name in enumerate(names):
+# 		if name == "Bob": return k
+# 	return -1
+
+# print(find_bob(test))
+
+# def find_bob(names):
+# 	try:
+# 		return names.index('Bob')
+# 	except:
+# 		return -1
+
+# def find_bob(names):
+# 		return names.index('Bob') if 'Bob' in names else -1
+
+# test = "edabit 2018"
+
+# def count_all(txt):
+# 	letters = 0
+# 	numbers = 0
+# 	dict = {}
+# 	for item in txt:
+# 		if item.isalpha() == True: letters += 1
+# 		if item.isdigit() == True: numbers += 1
+# 	dict['LETTERS'] = letters
+# 	dict['DIGITS'] = numbers
+# 	# return dict.append({'LETTERS': letters, 'DIGITS': numbers})
+# 	return dict
+
+
+# 	# return "LETTERS : {} DIGITS : {}".format(letters, numbers)
+
+# print(count_all(test))
+
+# def count_all(txt):
+#   return {
+#     'LETTERS': sum(1 for x in txt if x.isalpha()),
+#     'DIGITS': sum(1 for x in txt if x.isnumeric()),
+#   }
+
+# def count_all(txt):
+# 	return {"LETTERS": sum(c.isalpha() for c in txt),
+# 	        "DIGITS": sum(c.isdigit() for c in txt)}
