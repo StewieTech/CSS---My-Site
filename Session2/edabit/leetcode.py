@@ -17,15 +17,15 @@ test3 = [3,2,4] # 6
 #     nums.index(R)
 
 
-# def twoSum(nums, target):
-#     prevMap = {}
-#     for i, n in enumerate(nums):
-#         Diff = target - n
-#         # print(Diff)
-#         if Diff in prevMap:
-#             return [prevMap[Diff], i]
-#         prevMap[n] = i
-#     return prevMap
+def twoSum(nums, target):
+    prevMap = {}
+    for i, n in enumerate(nums):
+        Diff = target - n
+        # print(Diff)
+        if Diff in prevMap:
+            return [prevMap[Diff], i]
+        prevMap[n] = i
+    return prevMap
 
 
 

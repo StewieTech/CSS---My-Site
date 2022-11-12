@@ -576,16 +576,41 @@ test = "Edabit is Amazing"
 #     return ' '.join(("ook", "eek")[word[0] in vowels] for word in txt.split()).capitalize() + '.'
 
 
-def simple_check(a, b):
-	count = min(a,b)
-	timer = 0
-	a, b = max(a,b), min(a,b)
-	while b > 0:
-		if a %b == 0: timer += 1
-		b -= 1
-		a -= 1
-	return timer
+# def simple_check(a, b):
+# 	count = min(a,b)
+# 	timer = 0
+# 	a, b = max(a,b), min(a,b)
+# 	while b > 0:
+# 		if a %b == 0: timer += 1
+# 		b -= 1
+# 		a -= 1
+# 	return timer
 	
 
-print(simple_check(10,1))
+# print(simple_check(10,1))
 
+class player():
+
+	def __init__(self, name, age, height, weight):
+		self.name = name
+		self.age = age
+		self.height = height
+		self.weight = weight
+	# complete function
+		
+	def get_age(self):	
+	# complete function
+		return "{} is age {}".format(self.name,self.age)
+		
+	def get_height(self):	
+		return "{} is {}cm".format(self.name,self.height)
+	
+	# complete function
+		
+	def get_weight(self):
+		return "{} weighs {}kg".format(self.name,self.weight)
+	# complete function
+
+player1 = player("Errol",30,188,104) 
+
+print(player1.get_age())
