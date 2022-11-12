@@ -551,3 +551,41 @@ test = "BBBB"
 # Follow
 # def is_anagram(s1, s2):
 #   return(sorted(s1.lower()) == sorted(s2.lower()))
+
+test = "Edabit is Amazing"
+
+# def monkey_talk(txt):
+# 	dict = {1: "Eek.",
+# 	2: "Ook ook.",
+# 	3: "Eek eek eek.",
+# 	4: "Ook eek ook ook.",
+# 	"Everyone": "eek",
+# 	"Hello": "ook",}
+# 	lst = txt.split()
+# 	for word in lst:
+
+# 	count = len(txt.split())
+# 	return dict[count] 
+
+# print(monkey_talk(test))
+	# if len(txt.split()) == dict.keys() else "Not found"
+	# print(dict)
+
+# 	vowels = set("aeiouAEIOU")
+# def monkey_talk(txt):
+#     return ' '.join(("ook", "eek")[word[0] in vowels] for word in txt.split()).capitalize() + '.'
+
+
+def simple_check(a, b):
+	count = min(a,b)
+	timer = 0
+	a, b = max(a,b), min(a,b)
+	while b > 0:
+		if a %b == 0: timer += 1
+		b -= 1
+		a -= 1
+	return timer
+	
+
+print(simple_check(10,1))
+
