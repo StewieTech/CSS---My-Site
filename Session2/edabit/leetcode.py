@@ -17,16 +17,15 @@ test3 = [3,2,4] # 6
 #     nums.index(R)
 
 
-def twoSum(nums, target):
-    prevMap = {}
-    for i, n in enumerate(nums):
-        Diff = target - n
-        # print(Diff)
-        if Diff in prevMap:
-            return [prevMap[Diff], i]
-        prevMap[n] = i
-    return prevMap
-
+# def twoSum(nums, target):
+#     prevMap = {}
+#     for i, n in enumerate(nums):
+#         Diff = target - n
+#         # print(Diff)
+#         if Diff in prevMap:
+#             return [prevMap[Diff], i]
+#         prevMap[n] = i
+#     return prevMap
 
 
 
@@ -57,3 +56,20 @@ def twoSum(nums, target):
     #         if bal in num_dic:
     #             return [num_dic[bal], idx] 
     #         num_dic[num] = idx
+
+
+prices = [7,1,5,3,6,4]
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        prevMap = {}
+        minNum = 0
+        maxNum = 0
+        for i, val1 in enumerate(prices):
+            for j, val2 in enumerate(prices):
+                if val1 < val2 and prices.index(i) < prices.index(j) : minNum = val1
+                if val1 > val2: maxNum = val1 and prices.index(j) > prices.index(i) : maxNum = val1
+                return maxNum - minNum
+            
+
+print(prices.maxProfit())
