@@ -43,15 +43,15 @@
 
 // const futurePeople = (p, n) => p + 360 * n
 
-const addTwo = (number) => {
-    number +=2;
-    return number;
-}
+// const addTwo = (number) => {
+//     number +=2;
+//     return number;
+// }
 
-console.log(addTwo(2));
+// console.log(addTwo(2));
 
-// const addTwo = () => {
-//     let number = 4
+// // const addTwo = () => {
+// //     let number = 4
 // }
 
 // console.log(number)
@@ -59,7 +59,16 @@ console.log(addTwo(2));
 
 // 
 
+function addUp(num) {
+	var counter = 0;
+	for (var i = 1; i <= num; i++) {
+		counter = counter + i
+        console.log(counter)
+	}
+    return counter
+}
 
+console.log(addUp(4))
 
 
 
