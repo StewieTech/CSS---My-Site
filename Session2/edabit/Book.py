@@ -589,28 +589,42 @@ test = "Edabit is Amazing"
 
 # print(simple_check(10,1))
 
-class player():
+# class player():
 
-	def __init__(self, name, age, height, weight):
-		self.name = name
-		self.age = age
-		self.height = height
-		self.weight = weight
-	# complete function
+# 	def __init__(self, name, age, height, weight):
+# 		self.name = name
+# 		self.age = age
+# 		self.height = height
+# 		self.weight = weight
+# 	# complete function
 		
-	def get_age(self):	
-	# complete function
-		return "{} is age {}".format(self.name,self.age)
+# 	def get_age(self):	
+# 	# complete function
+# 		return "{} is age {}".format(self.name,self.age)
 		
-	def get_height(self):	
-		return "{} is {}cm".format(self.name,self.height)
+# 	def get_height(self):	
+# 		return "{} is {}cm".format(self.name,self.height)
 	
-	# complete function
+# 	# complete function
 		
-	def get_weight(self):
-		return "{} weighs {}kg".format(self.name,self.weight)
-	# complete function
+# 	def get_weight(self):
+# 		return "{} weighs {}kg".format(self.name,self.weight)
+# 	# complete function
 
-player1 = player("Errol",30,188,104) 
+# player1 = player("Errol",30,188,104) 
 
-print(player1.get_age())
+# print(player1.get_age())
+
+test1 = ["run","jump","run","jump","run"]
+test2 = "_|_|_"
+
+def running_athlete(act, txt):
+    r = {
+    "run_": "_",
+    "run|": "/",
+    "jump|": "|",
+    "jump_": "x"
+    }
+    return ''.join(r[b] for b in zip(act, txt))
+
+print(running_athlete(test1,test2))
