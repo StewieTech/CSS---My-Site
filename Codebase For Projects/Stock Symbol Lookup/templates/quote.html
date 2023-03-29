@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    quote
+    symbol
 {% endblock %}
 
 {% block main %}
 <form action="/quote" method="post">
     <div class="mb-3">
-        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="quote" name="quote" placeholder="Stock Quote" type="text" required>
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Stock Quote" type="text" required>
 
     </div>
 
@@ -28,13 +28,13 @@
             <tr>
                 <td>{{ QnameR }}</td>
                 <td>{{ QpriceR }}</td>
-                <td>{{ QsymbolR }}</td>
+                <td>{{ symbol }}</td>
             </tr>
         </thead>
         <tbody>
-            {% for quote in quotes %}
+            {% for symbol in quotes %}
                 <tr>
-                    <td>{{ quote.name }}</td>
+                    <td>{{ symbol.name }}</td>
                     <td>{{ person.price }}</td>
                 </tr>
             {% endfor %}

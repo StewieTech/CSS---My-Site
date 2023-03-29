@@ -7,7 +7,7 @@
 {% block main %}
 <form action="/buy" method="post">
     <div class="mb-3">
-        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="quote" name="quote" placeholder="Stock Quote" type="text" required>
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Stock Quote" type="text" required>
         <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Amount of Shares" type="number" required>
         <h3> {{ cashR }}</h3>
 
@@ -20,7 +20,7 @@
 <div class="section">
 
     <h2>My Portfolio</h2>
-    <table>
+    <table class ="table table-striped" >
         <thead>
             <tr>
                 <th>Name</th>
@@ -31,6 +31,7 @@
                 <tr>
                     <td>{{ stock.name }}</td>
                     <td>{{ stock.cash }}</td>
+                    <td>{{ stock.symbol }}</td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -54,7 +55,7 @@
             <tr>
                 <td>{{ QnameR }}</td>
                 <td>{{ QpriceR }}</td>
-                <td>{{ QsymbolR }}</td>
+                <td>{{ symbol }}</td>
             </tr>
         </thead>
         <tbody>
