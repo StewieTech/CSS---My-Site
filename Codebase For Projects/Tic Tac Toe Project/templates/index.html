@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="/static/styles.css" rel="stylesheet">
+  <title>Tic Tac Toe</title>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Tic Tac Toe</h1>
+  </div>
+  <div class="container">
+
+    <body>
+      <div class="container mt-5">
+        <table class="table table-bordered">
+              <tr>
+                <td id="cell-0"></td>
+                <td id="cell-1"></td>
+                <td id="cell-2"></td>
+              </tr>
+              <tr>
+                <td id="cell-3"></td>
+                <td id="cell-4"></td>
+                <td id="cell-5"></td>
+              </tr>
+              <tr>
+                <td id="cell-6"></td>
+                <td id="cell-7"></td>
+                <td id="cell-8"></td>
+              </tr>
+            </table>
+
+            <div class="turn-indicator">Player <span id="player-turn">X</span>'s turn</div>
+
+            <form action="/saveGame" method="post">
+              <div class="form-group">
+                <label for="player1">Player 1:</label>
+                <input type="text" class="form-control" id="player1" name="player1" data-placeholder="player1" required>
+              </div>
+
+              <div class="form-group">
+                <label for="player2">Player 2:</label>
+                <input type="text" class="form-control" id="player2" name="player2" data-placeholder="player2" required>
+              </div>
+
+              <input type="hidden" id="winner" name="winner" value="">
+
+              <button class="btn btn-primary" type="submit" class="btn btn-primary" style="float" right>New Game</button>
+            </form>
+            <div class="section">
+
+
+
+              <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+
+
+
+              <table>
+
+                <div class="container mt-5">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Player 1</th>
+                        <th>Player 2</th>
+                        <th>Winner</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for game in games %}
+                      <tr>
+                        <td>{{ game["player1"] }}</td>
+                        <td>{{ game["player2"] }}</td>
+                        <td>{{ game["winner"] }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+
+
+          </div>
+
+          <script>
+            var cells = document.querySelectorAll("td");
+            var playerTurn = "X";
+            var winner = "";
+            var turnIndicator = document.querySelector(".turn-indicator");
+            var winnerInput = document.querySelector("#winner");
+
+            cells.forEach(function (cell) {
+              cell.addEventListener("click", function () {
+                if (cell.textContent !== "" || winner !== "") {
+                  return;
+                }
+
+                cell.textContent = playerTurn;
+                checkForWinner();
+                playerTurn = playerTurn === "X" ? "O" : "X";
+                turnIndicator.textContent = "Player " + playerTurn + "'s turn";
+              });
+            });
+
+            function checkForWinner() {
+              if (checkForWinningSequence(0, 1, 2) || checkForWinningSequence(3, 4, 5) ||
+              checkForWinningSequence(6, 7, 8) || checkForWinningSequence(0, 3, 6) ||
+              checkForWinningSequence(1, 4, 7) || checkForWinningSequence(2, 5, 8) ||
+              checkForWinningSequence(0, 4, 8) || checkForWinningSequence(2, 4, 6)) {
+                winner = playerTurn;
+                winnerInput.value = winner;
+                turnIndicator.textContent = "Player " + winner + " won!!";
+                alert(player + ' wins!');
+              }
+
+            }
+
+
+            function checkForWinningSequence(cell1, cell2, cell3) {
+              return (cells[cell1].textContent === playerTurn && cells[cell2].textContent === playerTurn &&
+                cells[cell3].textContent === playerTurn);
+            }
+          </script>
+        </body>
+
+</html>
