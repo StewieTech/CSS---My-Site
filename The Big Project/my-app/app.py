@@ -6,9 +6,26 @@ app = Flask(__name__)
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-# @app.route('/')
-# def index():
-#     return 'Hello, world!'
+@app.route('/')
+def home():
+    return 'Welcome to the Movie Search App!'
+
+@app.route('/recommendations', methods=['GET'])
+def recommend():
+    movie_title = request.args.get('title')
+    # get index of movie
+    idx = indices[movie_title]
+    # get cosine similarity scores for all movies
+    sim_scores = list(enumerate(cosine_sim[idx]))
+    # sort scores in descending order
+    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+    # get top 10 most similar movies
+    sim_scores = sim_scores[1:11]
+    # get movie titles and return as list
+    movie_indices = [i[0] for i in sim_scores]
+    recommended_movies = movies['title'].iloc[movie_indices].tolist()
+    return jsonify({'status': 'success', 'message': 'Movie recommendations', 'recommendations': recommended_movies})
+
 
 
 @app.route('/search', methods=['GET'])
