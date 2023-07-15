@@ -31,17 +31,21 @@ function App() {
   });
 };
 
+var smiley = ';)'
+
   return (
     <div className="App">
+      <h1>Ask Your Wingman Lola A Question {smiley} </h1>
       <header className="App-header">
       <form onSubmit = {handleSubmit}>
         <textarea
         value = {message}
+        placeholder="Ask Lola anything ;)"
         onChange = {(e) => setMessage(e.target.value)}
         ></textarea>
         <button type ="submit">Submit</button>
       </form>
-      <div>{response}Hey</div>
+      <div>{response}</div>
 
       {/* can remove below */}
         <img src={logo} className="App-logo" alt="logo" />
