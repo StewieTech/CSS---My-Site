@@ -5,7 +5,7 @@ import './App.css';
 import personImage from './lola2.webp';
 
 // const pictureList = [ 'lola2.jpeg', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png', 'lola5.png' ];
- const pictureList = [ 'lola2.webp', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png', 'lola5.png']
+ const pictureList = [ 'lola2.png', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png',  'lola6v4.png', 'lola5.png']
 
 function App() {
   const [message, setMessage] = useState('');
@@ -15,7 +15,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setPictureIndex((prevIndex) => (prevIndex + 1) % pictureList.length);
-    fetch(`http://localhost:3003`, {
+    fetch(`https://lola-back.onrender.com/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,8 +54,8 @@ var smiley = ';)'
         <button type ="submit">Submit</button>
         </div>
       </form>
-      {/* <div>{response}</div> */}
-      <div>Hey</div>
+      <div>{response}</div>
+      {/* <div>Hey</div> */}
       
 
 
