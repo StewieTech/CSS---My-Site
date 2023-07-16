@@ -1,28 +1,43 @@
 const path = require('path');
 
 module.exports = {
-  entry: './client/src/index.js', // Entry point of your application
+  entry: './client/src/index.js',
   output: {
-    filename: 'bundle.js', // Name of the bundled JavaScript file
-    path: path.resolve(__dirname, 'dist'), // Output directory
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
       {
-        test: /\.js$/, // Match JavaScript files
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader', // Use Babel loader for JavaScript files
+          loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react'], // Apply the React preset
+            presets: ['@babel/preset-react'],
           },
         },
       },
       {
-        test: /\.css$/, // Match CSS files
-        use: ['style-loader', 'css-loader'], // Loaders for handling CSS files
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'], // Use @svgr/webpack for SVG files
+      },
+      {
+        test: /\.(webp)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images',
+            },
+          },
+        ],
       },
     ],
   },
-  
 };

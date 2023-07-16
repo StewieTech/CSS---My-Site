@@ -2,6 +2,7 @@
 import logo from './logo.svg';
 import React, { useState} from 'react';
 import './App.css';
+import personImage from './lola.webp';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -38,16 +39,21 @@ var smiley = ';)'
       <h1>Ask Your Wingman Lola A Question {smiley} </h1>
       <header className="App-header">
       <form onSubmit = {handleSubmit}>
+      
+      <div className="container">
         <textarea
         value = {message}
         placeholder="Ask Lola anything ;)"
         onChange = {(e) => setMessage(e.target.value)}
         ></textarea>
         <button type ="submit">Submit</button>
+        </div>
       </form>
       <div>{response}</div>
 
       {/* can remove below */}
+        <img src="Lola.webp" alt="Person" className="person-image" />
+
         <img src={logo} className="App-logo" alt="logo" />
         <p>
            <code>
