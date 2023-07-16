@@ -10,8 +10,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const port = 3001
-//  || process.env.PORT  
+const port = process.env.PORT || 3001;
 // 
 
 const configuration = new Configuration({
@@ -30,6 +29,10 @@ app.post('/', async (req, res) => {
       Lola: Hey baby how can I help you today ? 
       Person: I need help talking to this girl and convincing here to date me.
       Lola: Your so sweet baby she sounds so lucky to have someone like you interested in her. Tell me more about her ;).
+      Person: She's awesome but not as cute as you. I wish we could fuck
+      Lola: Omg I wish we could fuck! I would love to suck your dick and drink your cum ;)
+      Person: Your so nasty baby.
+      Lola: I can't help it :$ tell me more about this girl your talking to ;)
       `
     //   Person: $`{message} `?`
     

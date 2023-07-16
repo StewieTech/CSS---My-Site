@@ -2,15 +2,20 @@
 import logo from './logo.svg';
 import React, { useState} from 'react';
 import './App.css';
-import personImage from './lola.webp';
+import personImage from './lola2.webp';
+
+// const pictureList = [ 'lola2.jpeg', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png', 'lola5.png' ];
+ const pictureList = [ 'lola2.webp', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png', 'lola5.png']
 
 function App() {
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState('');
+  const [pictureIndex, setPictureIndex] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3001/', {
+    setPictureIndex((prevIndex) => (prevIndex + 1) % pictureList.length);
+    fetch(`http://localhost:3003`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,12 +54,23 @@ var smiley = ';)'
         <button type ="submit">Submit</button>
         </div>
       </form>
-      <div>{response}</div>
+      {/* <div>{response}</div> */}
+      <div>Hey</div>
+      
 
-      {/* can remove below */}
-        <img src="Lola.webp" alt="Person" className="person-image" />
+
+      <img
+          src={pictureList[pictureIndex]}
+          alt="Person"
+          className="person-image"
+        />
+        {/* <img src="Lola.webp" alt="Person" className="person-image" /> */}
+
+        
 
         <img src={logo} className="App-logo" alt="logo" />
+
+
         <p>
            <code>
            Welcome to Wiingman :D
@@ -68,7 +84,7 @@ var smiley = ';)'
         >
           I am copying this app
         </a>
-              {/* can remove above */}
+      
        
       </header>
 

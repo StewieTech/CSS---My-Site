@@ -27,7 +27,7 @@ module.exports = {
         use: ['@svgr/webpack'], // Use @svgr/webpack for SVG files
       },
       {
-        test: /\.(webp)$/i,
+        test: /\.(webp|png|jpg)$/i,
         use: [
           {
             loader: 'file-loader',
