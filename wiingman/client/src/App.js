@@ -80,4 +80,4 @@ var smiley = ';)'
 
 export default App
 
-// to runn app use : npm run dev 
+// to runnn app use : npm run dev 
