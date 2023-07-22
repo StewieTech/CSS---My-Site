@@ -15,32 +15,45 @@ function App() {
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState('');
   const [pictureIndex, setPictureIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const randomTimeout = Math.floor(Math.random() * 2500) + 2500 ;
 
-  const Work = process.env.REACT_APP_API_URL ;
+  // const Work = process.env.REACT_APP_API_URL ;
+  const Work = `http://localhost:3003` ; // test
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true); // Set loading to true when the form is submitted
     setPictureIndex((prevIndex) => (prevIndex + 1) % pictureList.length);
-    fetch(Work, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({message}),
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.message) {
+    
+    setTimeout(() => {
 
-        setResponse(data.message);
-      } else {
-        setResponse('Error: No message received');
-      }
-  })
-  .catch((error) => {
-    console.log('Error:', error);
-    setResponse('Error: Request failed');
-  });
+      fetch(Work, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({message}),
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) {
+          
+          
+          setResponse(data.message);
+        } else {
+          setResponse('Error: No message received');
+        }
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+        setResponse('Error: Request failed');
+      })
+      .finally(() => {
+        setIsLoading(false); // Set loading back to false when the fetch is complete
+      });
+      
+    }, randomTimeout);
 };
 
 // var smiley = ';)'
@@ -62,16 +75,26 @@ return (
             />
           </Form.Group>
           <Button variant="primary" type="submit" block>
-            Submit
+            Message Lola 😉
           </Button>
         </Form>
       </Col>
     </Row>
+
+     {/* Lola's Response */}
     <Row className="justify-content-center mt-3">
       <Col xs={12} sm={8} md={6} lg={4}>
-        <div><h2>{response}</h2></div>
+      {isLoading ? (
+        <h2 className="flashyDots"> . </h2> //Show flashy dots while loading
+      ) : response && (
+        <div className = "animatedResponse">
+        <h2>{response}</h2> {/* Show the animated response when not loading */}
+        </div>
+      )}
       </Col>
     </Row>
+
+
     <Row className="justify-content-center mt-3">
       <Col xs={12} sm={8} md={6} lg={4}>
         <img src={pictureList[pictureIndex]} alt="Person" className="person-image img-fluid" />

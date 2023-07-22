@@ -60,9 +60,11 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 800px;
   /* border: 4px solid rgba(54, 13, 65, 0.675); Purple */
+
   box-shadow: 0 4px 32px rgba(54, 13, 65, 0.675);
+  border-radius: 25px;
   
 }
 
@@ -75,6 +77,25 @@ body {
 h1 {
   align-items: center;
   text-align: center;
+
+  
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 800px;
+  background: linear-gradient(to right, #892be276, rgba(64, 0, 128, 0.2)); /* Nearly transparent purple gradient */
+  border-bottom-left-radius: 50%; /* Rounded bottom-left corner */
+  border-bottom-right-radius: 50%; /* Rounded bottom-right corner */
+
+  top: 0;
+  /* background: rgba(64, 0, 128, 0.7); Super dark purple with 70% opacity */
+  color: white; /* Text color */
+  padding: 10px; /* Add some padding for spacing */
+  border-radius: 20px; /* Add rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
+  /* opacity: 60%; */
+  
 }
 
 h2 {
@@ -82,11 +103,17 @@ h2 {
   text-align: center;
   font-size: calc(20px + 2vmin);
   max-width: 800px;
+  color: #ffffffa6; /* Set the text color to white */
+  background-color: #1a1a1a; /* Dark black */
+  box-shadow: 0 4px 32px rgba(54, 13, 65, 0.675);
+  border-radius: 25px;
+  width: 100%;
+  padding: 10px; /* Add some padding inside the textarea */
 }
 
 textarea {
   width: 100%;
-  /* max-width: 800px; */
+  max-width: 800px;
   height: 100px; /* Increase the height to make it more visible */
   border-radius: 25px;
   background-color: #1a1a1a; /* Dark black */
@@ -108,9 +135,10 @@ textarea {
 button[type="submit"] {
   padding: 10px 20px;
   width: 100%;
+  max-width: 800px;
   margin-top: 10px; /* Add some space between textarea and button */
-  background-color: #8a2be2; /* Purple */
-  color: #fff; /* Set the text color to white */
+  background-color: #892be276; /* Purple */
+  color: white; /* Text color */
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -123,11 +151,13 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #4b0082; /* Darker purple on hover */
+  color: white; /* Text color */
 }
 
 button {
   width: 100%;
   margin-bottom: 10px;
+  color: white; /* Text color */
 };
 
 
@@ -149,6 +179,69 @@ button {
     transform: rotate(360deg);
   }
 }
+
+@keyframes flashyAnimation {
+  0%, 100% {
+    font-size: 1.2em
+  }
+  50% {
+    font-size: 1.6em
+  }
+}
+
+.flashyDots {
+  animation: flashyAnimation 1s infinite;
+  display: inline-block ;
+  padding: 10px ;
+}
+
+.flashyDots::before {
+  content: '.';
+  animation: flashOneByOne 3s infinite;
+}
+
+.flashyDots::after {
+  content: '.';
+  animation: flashOneByOne 3s infinite;
+}
+
+.animatedResponse {
+  opacity: 0;
+  animation: fadeInAnimation 2s forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flashOneByOne {
+  0% {
+    opacity: 0.2;
+  }
+
+  25% {
+    opacity: 1;
+    font-size: 1.2em;
+  }
+
+  50% {
+    opacity: 0.2;
+    font-size: 1.2em;
+  }
+
+  75% {
+    opacity: 1;
+    font-size: 1.6em;
+  }
+}
+
 
 /* Styling for the text "Welcome to Wiingman :D" */
 .code {
