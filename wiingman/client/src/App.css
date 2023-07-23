@@ -3,8 +3,8 @@
   max-width: 800px; /* Set a maximum width for the container */
   width: 100%;
   padding: 15px; /* Add some padding to the container */
-
 }
+
 
 body {
   display: flex;
@@ -61,6 +61,7 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 800px;
+  padding: 10px 0px 0px 0px; 
   /* border: 4px solid rgba(54, 13, 65, 0.675); Purple */
 
   box-shadow: 0 4px 32px rgba(54, 13, 65, 0.675);
@@ -77,6 +78,8 @@ body {
 h1 {
   align-items: center;
   text-align: center;
+  line-height: 1;
+  margin-top: 0;
 
   
   /* position: fixed; */
@@ -88,10 +91,10 @@ h1 {
   border-bottom-left-radius: 50%; /* Rounded bottom-left corner */
   border-bottom-right-radius: 50%; /* Rounded bottom-right corner */
 
-  top: 0;
+ 
   /* background: rgba(64, 0, 128, 0.7); Super dark purple with 70% opacity */
   color: white; /* Text color */
-  padding: 10px; /* Add some padding for spacing */
+  padding: 10px 0px ; /* Add some padding for spacing */
   border-radius: 20px; /* Add rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
   /* opacity: 60%; */
@@ -102,16 +105,20 @@ h2 {
   align-items: center;
   text-align: center;
   font-size: calc(20px + 2vmin);
+  width: 100%;
   max-width: 800px;
   color: #ffffffa6; /* Set the text color to white */
   background-color: #1a1a1a; /* Dark black */
   box-shadow: 0 4px 32px rgba(54, 13, 65, 0.675);
   border-radius: 25px;
-  width: 100%;
-  padding: 10px; /* Add some padding inside the textarea */
+  padding: 10px 0px; 
+  /* Add some padding inside the textarea */
 }
 
+
+
 textarea {
+
   width: 100%;
   max-width: 800px;
   height: 100px; /* Increase the height to make it more visible */
@@ -124,6 +131,56 @@ textarea {
   font-size: calc(10px + 2vmin);
   box-shadow: 0 4px 6px rgba(143, 137, 137, 0.78);
   box-sizing: border-box; /* Include padding and border in the element's total width and height */ 
+  /* transition: width 0.3s ease-in-out;  */
+  /* Add a smooth transition for the height change */
+
+
+
+}
+
+
+.icon {
+  font-size: 24px;
+  margin-right: 10px;
+  position: absolute;
+  transition: opacity 0.3s;
+}
+
+
+
+.textarea-container {
+
+  /* Define the initial height of the textarea */
+  /* height: 100% ; */
+
+  width: 100%; 
+  align-items: right;
+
+  /* display: flex; */
+  align-items: center;
+
+  /* justify-content: flex-end;  */
+  /* Right-align the elements */
+
+  /* Other styles for the container */
+  transition: width 0.5s ease-in;
+  overflow: hidden;
+
+
+}
+
+.textarea-container.expanded {
+  /* Define the expanded height of the textarea when focused */
+  /* height: 200px; */
+  /* height: 100% ; */
+  width: 90%;
+  display: flex;  
+  justify-content: flex-end; 
+}
+
+.expanded {
+  /* height: 200px;  */
+  /* Set the expanded height of the textarea */
 }
 
 ::placeholder {
@@ -133,7 +190,7 @@ textarea {
 
 
 button[type="submit"] {
-  padding: 10px 20px;
+  padding: 10px 0px; 
   width: 100%;
   max-width: 800px;
   margin-top: 10px; /* Add some space between textarea and button */
@@ -152,13 +209,34 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #4b0082; /* Darker purple on hover */
   color: white; /* Text color */
+  width: 100%;
+  max-width: 800px;
 }
 
 button {
   width: 100%;
   margin-bottom: 10px;
   color: white; /* Text color */
+
+  max-width: 800px;
 };
+
+.upload-button {
+
+  height: 10%;
+  width: 10%;
+  display: 'inline-block';
+  /* border-radius: 50%; */
+
+  margin-right: 10px;  
+  display: flex;
+  align-items: left;
+  justify-content: center; 
+}
+
+.hide {
+  display: none; /* Hide the upload button */
+}
 
 
 
@@ -168,7 +246,10 @@ button {
   /* width: 100%; */
   align-items: center;
   text-align: center;
-  height: 100vh;
+  /* height: 100vh; */
+
+  align-items: flex-start; /* Align items to the top */
+  
 }
 
 @keyframes App-logo-spin {
@@ -190,9 +271,9 @@ button {
 }
 
 .flashyDots {
-  animation: flashyAnimation 1s infinite;
+  animation: flashyAnimation 1.8s infinite;
   display: inline-block ;
-  padding: 10px ;
+  padding: 10px 0px; 
 }
 
 .flashyDots::before {
@@ -256,4 +337,14 @@ button {
   width: 100%;
   text-align: center;
   align-items: center;
+}
+
+
+.page-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%
 }

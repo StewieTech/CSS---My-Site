@@ -4,6 +4,8 @@ import React, { useState} from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
 import {Row, Col, Form, Button } from 'react-bootstrap';
+import { FiCamera } from 'react-icons/fi';// Import icons from react-icons library
+import { FiArrowRight } from 'react-icons/fi';
 
 console.log(process.env.REACT_APP_API_URL)
 console.log("Hey")
@@ -17,9 +19,19 @@ function App() {
   const [pictureIndex, setPictureIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const randomTimeout = Math.floor(Math.random() * 2500) + 2500 ;
+  const [isTextareaFocused, setIsTextareaFocused] = useState(false);
+  // const [isTextareaBlur, setIsTextareaBlur] = useState(false);
 
-  // const Work = process.env.REACT_APP_API_URL ;
-  const Work = `http://localhost:3003` ; // test
+  const handleTextareaFocus = () => {
+    setIsTextareaFocused(true);
+  };
+
+  const handleTextareaBlur = () => {
+    setIsTextareaFocused(false);
+  };
+
+  const Work = process.env.REACT_APP_API_URL ;
+  // const Work = `http://localhost:3003` ; // test
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,22 +74,49 @@ return (
 
 
 <Container fluid>
-    <h1 className="text-center mt-3">Ask Your Wingwoman Lola A Question 😉</h1>
+<div className="glass-container">
+    <h1 className="text-center mt-3">Ask Lola 😉</h1>
+    </div>
+
+    <div className = {` ${isTextareaFocused ? 'expanded' : ''}`}>
+      <div className={` ${isTextareaFocused ? 'hide' : ''}`}>
+      {/* <img src={logo} alt="logo" /> */}
+      </div>
+    </div>
+   
+
+
+
+    {/* Text Area */}
+
     <Row className="justify-content-center">
       <Col xs={12} sm={8} md={6} lg={4}>
+      <div className={`textarea-container ${isTextareaFocused ? 'expanded' : ''}`}>
+             {/* <img src={logo} alt="logo" className=".upload-button" /> */}
+             {isTextareaFocused ? (
+              <FiArrowRight className="icon arrow-icon" />
+             ) : (
+              <FiCamera className="icon camera-icon"/>
+             )}
+       
+       
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formTextarea">
             <Form.Control
-              as="textarea"
+              as="textarea" 
               value={message}
-              placeholder="Ask Lola anything ;)"
+              placeholder="Ask your wingwomen anything ;)"
               onChange={(e) => setMessage(e.target.value)}
+              onFocus={handleTextareaFocus}
+              onBlur={handleTextareaBlur}
+              className={`textarea ${isTextareaFocused ? 'focus' : ''}`}
             />
           </Form.Group>
           <Button variant="primary" type="submit" block>
-            Message Lola 😉
+            Send Message 💜 
           </Button>
         </Form>
+      </div>
       </Col>
     </Row>
 
@@ -111,7 +150,7 @@ return (
     <Row className="justify-content-center mt-3">
       <Col xs={12} sm={8} md={6} lg={4}  className="text-center">
         <p>
-          <code>Welcome to Lola: Your Personal AI Wingwoman :D</code>
+          <code>Hi I'm Lola 💜 Your Personal AI Wingwoman</code>
         </p>
         <p className="text-center">
           <a
