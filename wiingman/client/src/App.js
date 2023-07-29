@@ -2,10 +2,20 @@
 import logo from './logo.svg';
 import React, { useState} from 'react';
 import './App.css';
-import { Container } from 'react-bootstrap';
-import {Row, Col, Form, Button } from 'react-bootstrap';
-import { FiCamera } from 'react-icons/fi';// Import icons from react-icons library
-import { FiArrowRight } from 'react-icons/fi';
+// import { Container } from 'react-bootstrap';
+import {Container, Row, Col, Form, Button, Modal, Badge } from 'react-bootstrap';
+import { FiCamera, FiArrowRight } from 'react-icons/fi';// Import icons from react-icons library
+// import { FiArrowRight } from 'react-icons/fi';
+
+import Tesseract from 'tesseract.js'
+import Dropzone from 'react-dropzone';
+import Login from './components/Login';
+
+// Components
+import Header from './components/Header';
+
+// import Response from './components/Response';
+// import ProUpgradeModal from './components/ProUpgradeModal';
 
 console.log(process.env.REACT_APP_API_URL)
 console.log("Hey")
@@ -20,15 +30,66 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const randomTimeout = Math.floor(Math.random() * 2500) + 2500 ;
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [ocrText, setOcrText] = useState('') ;
+  var [questionCount, setQuestionCount] = useState(0);
+  const [showProPopup, setShowProProPopup] = useState(false);
   // const [isTextareaBlur, setIsTextareaBlur] = useState(false);
-
+  
+  const MAX_QUESTION_LIMIT_FREE = 5
   const handleTextareaFocus = () => {
     setIsTextareaFocused(true);
   };
-
+  
   const handleTextareaBlur = () => {
     setIsTextareaFocused(false);
   };
+  
+  if (questionCount >= MAX_QUESTION_LIMIT_FREE) {
+    setShowProProPopup(true) ;
+    return;
+  }
+
+
+  const handleQuestionSubmit = () => {
+    if (questionCount < MAX_QUESTION_LIMIT_FREE) {
+      setQuestionCount((prevCount) => prevCount + 1);
+    } else {
+      setShowProProPopup(true);
+    }
+  }
+
+  // questionCount = 2
+
+  
+  var remainingFreeQuestions = MAX_QUESTION_LIMIT_FREE - questionCount ;
+
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      Tesseract.recognize(file, 'eng')
+      .then(({ data: {text} }) => {
+        // const processedText = processTextConversation(text);
+        // setMessage(processedText);
+ 
+        setMessage(text);
+      })
+      .catch((error) => {
+        console.error('Error extracting text:',error);
+      })
+    }
+  }
+
+  const handleSignUpForPro = () => {
+    setShowProProPopup(false);
+  }
+
+  const handleCloseProPopup = () => {
+    setShowProProPopup(false);
+  };
+
 
   const Work = process.env.REACT_APP_API_URL ;
   // const Work = `http://localhost:3003` ; // test
@@ -53,6 +114,7 @@ function App() {
           
           
           setResponse(data.message);
+          setQuestionCount((prevCount) => prevCount + 1); 
         } else {
           setResponse('Error: No message received');
         }
@@ -78,13 +140,21 @@ return (
     <h1 className="text-center mt-3">Ask Lola 😉</h1>
     </div>
 
-    <div className = {` ${isTextareaFocused ? 'expanded' : ''}`}>
-      <div className={` ${isTextareaFocused ? 'hide' : ''}`}>
-      {/* <img src={logo} alt="logo" /> */}
-      </div>
-    </div>
-   
+    {/* I am not sure if I should delete below */}
 
+    {/* <div className = {` ${isTextareaFocused ? 'expanded' : ''}`}>
+    
+    {isTextareaFocused ? (
+            <FiArrowRight className="icon arrow-icon" />
+             ) : (
+              <FiCamera className="icon camera-icon"/>
+              
+             )}
+       
+      <div className={` ${isTextareaFocused ? 'hide' : ''}`}> </div>
+    </div> */}
+   
+    {/* <input type="file" accept="image/*" onChange={handleImageUpload} /> */}
 
 
     {/* Text Area */}
@@ -92,12 +162,10 @@ return (
     <Row className="justify-content-center">
       <Col xs={12} sm={8} md={6} lg={4}>
       <div className={`textarea-container ${isTextareaFocused ? 'expanded' : ''}`}>
-             {/* <img src={logo} alt="logo" className=".upload-button" /> */}
-             {isTextareaFocused ? (
-              <FiArrowRight className="icon arrow-icon" />
-             ) : (
-              <FiCamera className="icon camera-icon"/>
-             )}
+
+
+ 
+
        
        
         <Form onSubmit={handleSubmit}>
@@ -110,7 +178,36 @@ return (
               onFocus={handleTextareaFocus}
               onBlur={handleTextareaBlur}
               className={`textarea ${isTextareaFocused ? 'focus' : ''}`}
-            />
+               />
+
+            {isTextareaFocused ? (
+              <FiArrowRight className="icon arrow-icon" />
+             ) : (
+              <label htmlFor="imageUpload">
+                <FiCamera className={`camera-icon ${isTextareaFocused ? 'hidden' : ''}`} />
+              </label>
+             )}
+
+             {/* hidden input file */}
+             <input
+             id="imageUpload"
+             type="file"
+             accept="image/*"
+             onChange={handleImageUpload}
+             style={{ display: 'none'}}
+
+             />
+               
+               {/* Pro Badge */}
+               <div className="text-center">
+                  {remainingFreeQuestions > 0 ? (
+                    <Badge variant="secondary">Remaining Free Questions: {remainingFreeQuestions}</Badge>
+                  ) : (
+                    <Badge variant="danger">Upgrade to Pro for Unlimited Questions</Badge>
+                  )}
+                </div>
+
+          {/* <input type="file" accept="image/*" onChange={handleImageUpload} /> */}
           </Form.Group>
           <Button variant="primary" type="submit" block>
             Send Message 💜 
@@ -164,6 +261,22 @@ return (
         </p>
       </Col>
     </Row>
+    <Modal show = {showProPopup} onHide={handleCloseProPopup}>
+        <Modal.Header closeButton>
+          <Modal.Title>Upgrade to Pro to talk more to Lola</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p> Upgrade now to get unlimited questions and more features!</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseProPopup}>
+            Close
+          </Button>
+          <Button variant = "primary" onClick={handleSignUpForPro}>
+            Upgrade to Pro
+          </Button>
+        </Modal.Footer>
+    </Modal>
   </Container>
 
 );
@@ -176,3 +289,21 @@ export default App
 // aws s3 sync build/ s3://lola-s3
 // REACT_APP_API_URL=https://lola-back.onrender.com/
 // REACT_APP_API_URL=http://3.80.220.82:3001/
+
+// What do I need before deploying the app
+
+// A way for users to login
+// login users ask 5 questions
+// then pop up for them to pay comes up
+// pop up copies rizz (share for free, pay for more)
+
+// I can remove the OCR and upload it when it fully works
+// Just need to commit all of it out
+
+// Eventuall
+// Fix OCR
+// update prompt based on time talking with Lola
+
+// character limit
+// if textbox is blank
+
