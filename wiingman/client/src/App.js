@@ -6,6 +6,7 @@ import './App.css';
 import {Container, Row, Col, Form, Button, Modal, Badge } from 'react-bootstrap';
 import { FiCamera, FiArrowRight } from 'react-icons/fi';// Import icons from react-icons library
 // import { FiArrowRight } from 'react-icons/fi';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-com';
 
 import Tesseract from 'tesseract.js'
 import Dropzone from 'react-dropzone';
