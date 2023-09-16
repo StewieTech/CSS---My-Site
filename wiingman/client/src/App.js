@@ -1,16 +1,17 @@
 // import a react component that inputs a textarea message then performs a fetch request to localhost:3001 gets back a respnse as a data.message and displays that message in a box below 
 import logo from './logo.svg';
-import React, { useState} from 'react';
+import React, {useState} from 'react';
+// import GoogleOAuth from './components/GoogleOAuth';
+
 import './App.css';
 // import { Container } from 'react-bootstrap';
 import {Container, Row, Col, Form, Button, Modal, Badge } from 'react-bootstrap';
 import { FiCamera, FiArrowRight } from 'react-icons/fi';// Import icons from react-icons library
-// import { FiArrowRight } from 'react-icons/fi';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-com';
+
+
 
 import Tesseract from 'tesseract.js'
-import Dropzone from 'react-dropzone';
-import Login from './components/Login';
+
 
 // Components
 import Header from './components/Header';
@@ -35,6 +36,8 @@ function App() {
   const [ocrText, setOcrText] = useState('') ;
   var [questionCount, setQuestionCount] = useState(0);
   const [showProPopup, setShowProProPopup] = useState(false);
+  
+
   // const [isTextareaBlur, setIsTextareaBlur] = useState(false);
   
   const MAX_QUESTION_LIMIT_FREE = 5
@@ -92,8 +95,8 @@ function App() {
   };
 
 
-  // const Work = process.env.REACT_APP_API_URL ;
-  const Work = `http://localhost:3001` ; // test
+  const Work = process.env.REACT_APP_API_URL ;
+  // const Work = `http://localhost:3003` ; // test
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -276,8 +279,11 @@ return (
           <Button variant = "primary" onClick={handleSignUpForPro}>
             Upgrade to Pro
           </Button>
+          {/* Login to Google   in this line !!! */}
         </Modal.Footer>
     </Modal>
+
+        {/* <GoogleOAuth/> */}
   </Container>
 
 );
