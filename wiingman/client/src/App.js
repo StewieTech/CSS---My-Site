@@ -1,7 +1,8 @@
 // import a react component that inputs a textarea message then performs a fetch request to localhost:3001 gets back a respnse as a data.message and displays that message in a box below 
 import logo from './logo.svg';
 import React, {useState} from 'react';
-// import GoogleOAuth from './components/GoogleOAuth';
+import GoogleOAuth from './components/GoogleOAuth';
+import RegistrationForm from './components/RegistrationForm';
 
 import './App.css';
 // import { Container } from 'react-bootstrap';
@@ -283,7 +284,8 @@ return (
         </Modal.Footer>
     </Modal>
 
-        {/* <GoogleOAuth/> */}
+        <GoogleOAuth/>
+        <RegistrationForm />
   </Container>
 
 );

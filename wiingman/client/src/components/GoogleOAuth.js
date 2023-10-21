@@ -1,50 +1,40 @@
 import React from 'react';
-import { GoogleOAuthProvider, GoogleLogin, useGoogleLogin } from '@react-oauth/google';
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
-// passport.use(new GoogleStrategy({
-//     clientID: process.env.GOOGLE_CLIENT_IDD,
-//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://localhost:3000/auth/google/AskLola",
-//     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
-//   }
-// ));
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 
+
+function Login() {
+
+const onSuccess=(res) => {
+  console.log("Login Success!! Current user: ", res.profile0bj);
+}
+
+const onFailure=(res) => {
+    console.log("Login FAILED BABY!! res: ",res);
+}
   
 
-function App() {
     return (
-        <GoogleOAuthProvider clientId= {process.env.GOOGLE_CLIENT_ID} 
-        clientSecret = {process.env.GOOGLE_CLIENT_SECRET} >
-        <div className="App">
-        
-        
+        <GoogleOAuthProvider>
+
+      <div id="signInButton">
         <GoogleLogin
-        
-  onSuccess={credentialResponse => {
-    console.log(credentialResponse);
-  }}
-  onError={() => {
-    console.log('Login Failed');
-  }}
-  useOneTap
-/>;
 
-
-          
+            clientId= {process.env.GOOGLE_CLIENT_ID} 
+            buttonText="Login"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={'single_host_origin'}
+            clientSecret = {process.env.GOOGLE_CLIENT_SECRET} 
+            isSignedIn={true}
+        />;
         </div>
-        
         </GoogleOAuthProvider>
-    );
-
+            
+         
+    )
 }
 
 
 
-export default App
+export default Login
