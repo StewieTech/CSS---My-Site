@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 function Login() {
@@ -11,11 +11,10 @@ function Login() {
       .then(data => {
         setClientId(data.clientId);
         setClientSecret(data.clientSecret);
-        console.log('clientId:', data.clientId);
-        console.log('clientSecret:', data.clientSecret);
       })
       .catch(error => console.error(error));
   }, []);
+
   
   const onSuccess = (res) => {
     console.log("Login Success!! Current user: ", res.profileObj);
@@ -30,8 +29,8 @@ function Login() {
 
   return (
     <GoogleOAuthProvider
-      clientId={clientId}
-      clientSecret={clientSecret}
+      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+      clientSecret={process.env.GOOGLE_CLIENT_SECRET}
     >
       <div id="signInButton">
         <GoogleLogin
@@ -42,7 +41,6 @@ function Login() {
           isSignedIn={true}
         />
         <p>Google Login button rendered successfully!</p>
-        <p>{onSuccess}</p>
       </div>
     </GoogleOAuthProvider>
   )

@@ -1,42 +1,41 @@
-// import a react component that inputs a textarea message then performs a fetch request to localhost:3001 gets back a respnse as a data.message and displays that message in a box below 
-import logo from './logo.svg';
+// Library Imports
 import React, {useState} from 'react';
-import GoogleOAuth from './components/GoogleOAuth';
-import RegistrationForm from './components/RegistrationForm';
-
-import './App.css';
-// import { Container } from 'react-bootstrap';
+import { FiCamera, FiArrowRight } from 'react-icons/fi';
 import {Container, Row, Col, Form, Button, Modal, Badge } from 'react-bootstrap';
-import { FiCamera, FiArrowRight } from 'react-icons/fi';// Import icons from react-icons library
-
-
-
 import Tesseract from 'tesseract.js'
 
-
 // Components
+import GoogleOAuth from './components/GoogleOAuth';
+import RegistrationForm from './components/RegistrationForm';
 import Header from './components/Header';
+import QuestionCount from './components/QuestionCount';
 
-// import Response from './components/Response';
-// import ProUpgradeModal from './components/ProUpgradeModal';
+// Assets
+import './App.css';
+const pictureList = [ 'lola2.png', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png',  'lola6v4.png', 'lola5.png']
+
+// Constants
+const MIN_TIMEOUT = 2500;
+const MAX_TIMEOUT = 5000;
+
+
 
 console.log(process.env.REACT_APP_API_URL)
 console.log("Hey")
 
 // const pictureList = [ 'lola2.jpeg', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png', 'lola5.png' ];
- const pictureList = [ 'lola2.png', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png',  'lola6v4.png', 'lola5.png']
 
 function App() {
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState('');
   const [pictureIndex, setPictureIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const randomTimeout = Math.floor(Math.random() * 2500) + 2500 ;
+  const randomTimeout = Math.floor(Math.random() * MAX_TIMEOUT - MIN_TIMEOUT +1) + MIN_TIMEOUT ;
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const [ocrText, setOcrText] = useState('') ;
   var [questionCount, setQuestionCount] = useState(0);
-  const [showProPopup, setShowProProPopup] = useState(false);
+  const [showProPopup, setShowProPopup] = useState(false);
   
 
   // const [isTextareaBlur, setIsTextareaBlur] = useState(false);
@@ -51,7 +50,7 @@ function App() {
   };
   
   if (questionCount >= MAX_QUESTION_LIMIT_FREE) {
-    setShowProProPopup(true) ;
+    setShowProPopup(true) ;
     return;
   }
 
@@ -60,11 +59,9 @@ function App() {
     if (questionCount < MAX_QUESTION_LIMIT_FREE) {
       setQuestionCount((prevCount) => prevCount + 1);
     } else {
-      setShowProProPopup(true);
+      setShowProPopup(true);
     }
   }
-
-  // questionCount = 2
 
   
   var remainingFreeQuestions = MAX_QUESTION_LIMIT_FREE - questionCount ;
@@ -88,16 +85,16 @@ function App() {
   }
 
   const handleSignUpForPro = () => {
-    setShowProProPopup(false);
+    setShowProPopup(false);
   }
 
   const handleCloseProPopup = () => {
-    setShowProProPopup(false);
+    setShowProPopup(false);
   };
 
-
+// 
   const Work = process.env.REACT_APP_API_URL ;
-  // const Work = `http://localhost:3003` ; // test
+  // const Work = `http://localhost:3001` ; // test
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -138,6 +135,8 @@ function App() {
 // var smiley = ';)'
 
 return (
+
+  // <QuestionCount />
 
 
 <Container fluid>
