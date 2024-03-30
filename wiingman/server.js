@@ -8,10 +8,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+const fs = require('fs');
+const path = require('path');
 const port = process.env.PORT || 3001;
 //
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'client', 'public')));
+// app.use(express.static('client/public'));
 
 //
 const configuration = new Configuration({
@@ -74,9 +78,51 @@ app.post('/', async (req, res) => {
     }
 });
 
+
 app.get('/', (req, res) => {
     res.send('Hey Yall World')
 });
+
+
+const listImagesFromDirectory = (subDirectory) => {
+    return new Promise((resolve, reject) => {
+      const directoryPath = path.join(__dirname, 'client', 'public', subDirectory);
+      fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+          console.log(`Error reading directory: ${directoryPath}`, err);
+          reject("Failed to list images");
+        } else {
+          console.log(`Files found in ${directoryPath}:`, files);
+          const imageFiles = files.filter(file => /\.(jpg|jpeg|png|gif|webp|mp4)$/i.test(file))
+                                  .map(file => `/` + path.join(subDirectory, file));
+          resolve(imageFiles);
+        }
+      });
+    });
+  };
+
+// Endpoint for listing images in headerMain
+app.get('/api/images/headerMain', async (req, res) => {
+    try {
+      const images = await listImagesFromDirectory('headerMain');
+      res.json(images); // Removing 'public' from the path, as static serve does this automatically
+    } catch (error) {
+      console.error(`Error in /api/images/headerMain:`, error);
+      res.status(500).send(error);
+    }
+  });
+
+// Endpoint for listing images in Yoga
+app.get('/api/images/Yoga', async (req, res) => {
+    try {
+      const images = await listImagesFromDirectory('Yoga');
+      res.json(images); // Removing 'public' from the path, as static serve does this automatically
+    } catch (error) {
+      console.error(`Error in /api/images/Yoga:`, error);
+      res.status(500).send(error);
+    }
+  });
+  
 
 
 app.listen(port, () => {

@@ -1,22 +1,32 @@
 // Library Imports
-import React, {useState} from 'react';
-import { FiCamera, FiArrowRight } from 'react-icons/fi';
+import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Form, Button, Modal, Badge } from 'react-bootstrap';
 import Tesseract from 'tesseract.js'
+import { GoogleOAuthProvider } from '@react-oauth/google';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // Components
 import GoogleOAuth from './components/GoogleOAuth';
 import RegistrationForm from './components/RegistrationForm';
 import Header from './components/Header';
 import QuestionCount from './components/QuestionCount';
+import TextAreaComponent from './components/TextAreaComponent';
+import NonsenseFooter from './components/NonsenseFooter'; 
+import ImageDisplayComponent from './components/ImageDisplayComponent';
+
 
 // Assets
 import './App.css';
-const pictureList = [ 'lola2.png', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png',  'lola6v4.png', 'lola5.png']
+// const pictureList = [ 'lola2.png', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png',  'lola6v4.png', 'lola5.png']
+
 
 // Constants
 const MIN_TIMEOUT = 2500;
 const MAX_TIMEOUT = 5000;
+const MAX_QUESTION_LIMIT_FREE = 2
+
 
 
 
@@ -28,43 +38,35 @@ console.log("Hey")
 function App() {
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState('');
-  const [pictureIndex, setPictureIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const randomTimeout = Math.floor(Math.random() * MAX_TIMEOUT - MIN_TIMEOUT +1) + MIN_TIMEOUT ;
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const [ocrText, setOcrText] = useState('') ;
+  const [pictureIndex, setPictureIndex] = useState(0);
+
   var [questionCount, setQuestionCount] = useState(0);
   const [showProPopup, setShowProPopup] = useState(false);
   
-
   // const [isTextareaBlur, setIsTextareaBlur] = useState(false);
   
-  const MAX_QUESTION_LIMIT_FREE = 5
-  const handleTextareaFocus = () => {
-    setIsTextareaFocused(true);
-  };
   
-  const handleTextareaBlur = () => {
-    setIsTextareaFocused(false);
-  };
-  
+const handleTextareaFocus = () => {
+  setIsTextareaFocused(true);
+};
+
+const handleTextareaBlur = () => {
+  setIsTextareaFocused(false);
+};
+
+
+useEffect(() => {
   if (questionCount >= MAX_QUESTION_LIMIT_FREE) {
-    setShowProPopup(true) ;
-    return;
+    setShowProPopup(true);
+  } else {
+    setShowProPopup(false);
   }
-
-
-  const handleQuestionSubmit = () => {
-    if (questionCount < MAX_QUESTION_LIMIT_FREE) {
-      setQuestionCount((prevCount) => prevCount + 1);
-    } else {
-      setShowProPopup(true);
-    }
-  }
-
-  
-  var remainingFreeQuestions = MAX_QUESTION_LIMIT_FREE - questionCount ;
+}, [questionCount]); // Depend on questionCount to re-run this effect
 
 
   const handleImageUpload = (e) => {
@@ -75,7 +77,8 @@ function App() {
       .then(({ data: {text} }) => {
         // const processedText = processTextConversation(text);
         // setMessage(processedText);
- 
+
+        
         setMessage(text);
       })
       .catch((error) => {
@@ -83,6 +86,8 @@ function App() {
       })
     }
   }
+
+
 
   const handleSignUpForPro = () => {
     setShowProPopup(false);
@@ -92,14 +97,16 @@ function App() {
     setShowProPopup(false);
   };
 
+
+
 // 
-  const Work = process.env.REACT_APP_API_URL ;
+  const Work = process.env.REACT_APP_API_URL2 ;
   // const Work = `http://localhost:3001` ; // test
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true); // Set loading to true when the form is submitted
-    setPictureIndex((prevIndex) => (prevIndex + 1) % pictureList.length);
+    // setPictureIndex((prevIndex) => (prevIndex + 1) % pictureList.length);
     
     setTimeout(() => {
 
@@ -136,90 +143,42 @@ function App() {
 
 return (
 
-  // <QuestionCount />
+
 
 
 <Container fluid>
+<GoogleOAuthProvider clientId="208082140209-68a5907b43ju7427bhtt0dhibdvf4u97.apps.googleusercontent.com">
 <div className="glass-container">
     <h1 className="text-center mt-3">Ask Lola 😉</h1>
     </div>
 
-    {/* I am not sure if I should delete below */}
+ 
 
-    {/* <div className = {` ${isTextareaFocused ? 'expanded' : ''}`}>
-    
-    {isTextareaFocused ? (
-            <FiArrowRight className="icon arrow-icon" />
-             ) : (
-              <FiCamera className="icon camera-icon"/>
-              
-             )}
-       
-      <div className={` ${isTextareaFocused ? 'hide' : ''}`}> </div>
-    </div> */}
-   
-    {/* <input type="file" accept="image/*" onChange={handleImageUpload} /> */}
-
-
-    {/* Text Area */}
 
     <Row className="justify-content-center">
       <Col xs={12} sm={8} md={6} lg={4}>
       <div className={`textarea-container ${isTextareaFocused ? 'expanded' : ''}`}>
 
 
- 
-
+      <TextAreaComponent
+        message={message}
+        setMessage={setMessage} // This should be a function returned by useState
+        isTextareaFocused={isTextareaFocused}
+        handleTextareaFocus={handleTextareaFocus}
+        handleImageUpload={handleImageUpload}
+        handleTextareaBlur={handleTextareaBlur}
+        handleSubmit={handleSubmit}
+      />
        
-       
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formTextarea">
-            <Form.Control
-              as="textarea" 
-              value={message}
-              placeholder="Ask your wingwomen anything ;)"
-              onChange={(e) => setMessage(e.target.value)}
-              onFocus={handleTextareaFocus}
-              onBlur={handleTextareaBlur}
-              className={`textarea ${isTextareaFocused ? 'focus' : ''}`}
-               />
-
-            {isTextareaFocused ? (
-              <FiArrowRight className="icon arrow-icon" />
-             ) : (
-              <label htmlFor="imageUpload">
-                <FiCamera className={`camera-icon ${isTextareaFocused ? 'hidden' : ''}`} />
-              </label>
-             )}
-
-             {/* hidden input file */}
-             <input
-             id="imageUpload"
-             type="file"
-             accept="image/*"
-             onChange={handleImageUpload}
-             style={{ display: 'none'}}
-
-             />
-               
-               {/* Pro Badge */}
-               <div className="text-center">
-                  {remainingFreeQuestions > 0 ? (
-                    <Badge variant="secondary">Remaining Free Questions: {remainingFreeQuestions}</Badge>
-                  ) : (
-                    <Badge variant="danger">Upgrade to Pro for Unlimited Questions</Badge>
-                  )}
-                </div>
-
-          {/* <input type="file" accept="image/*" onChange={handleImageUpload} /> */}
-          </Form.Group>
-          <Button variant="primary" type="submit" block>
-            Send Message 💜 
-          </Button>
-        </Form>
-      </div>
+             </div>
       </Col>
     </Row>
+
+    <QuestionCount
+    questionCount={questionCount}
+    maxQuestionLimit={MAX_QUESTION_LIMIT_FREE}
+    onUpgradeClick={handleSignUpForPro}
+  />
 
      {/* Lola's Response */}
     <Row className="justify-content-center mt-3">
@@ -237,54 +196,29 @@ return (
 
     <Row className="justify-content-center mt-3">
       <Col xs={12} sm={8} md={6} lg={4}>
-        <img src={pictureList[pictureIndex]} alt="Person" className="person-image img-fluid" />
+       <ImageDisplayComponent
+        // pictureList={pictureList}
+        // pictureIndex={pictureIndex}
+       />
       </Col>
     </Row>
 
-    <Row className="justify-content-center mt-3">
-      <Col xs={12} sm={8} md={6} lg={4}>
-        <img src={logo} className="App-logo" alt="logo" />
-      </Col>
-    </Row>
 
 
-    <Row className="justify-content-center mt-3">
-      <Col xs={12} sm={8} md={6} lg={4}  className="text-center">
-        <p>
-          <code>Hi I'm Lola 💜 Your Personal AI Wingwoman</code>
-        </p>
-        <p className="text-center">
-          <a
-            className="App-link"
-            href="https://apps.apple.com/app/apple-store/id1663430725"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            I am copying this app
-          </a>
-        </p>
-      </Col>
-    </Row>
-    <Modal show = {showProPopup} onHide={handleCloseProPopup}>
-        <Modal.Header closeButton>
-          <Modal.Title>Upgrade to Pro to talk more to Lola</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p> Upgrade now to get unlimited questions and more features!</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseProPopup}>
-            Close
-          </Button>
-          <Button variant = "primary" onClick={handleSignUpForPro}>
-            Upgrade to Pro
-          </Button>
-          {/* Login to Google   in this line !!! */}
-        </Modal.Footer>
-    </Modal>
 
-        <GoogleOAuth/>
-        <RegistrationForm />
+          <NonsenseFooter/>
+   
+
+
+      <div className="App">
+        <GoogleOAuth />
+      </div>
+
+    <RegistrationForm />
+
+
+
+    </GoogleOAuthProvider>
   </Container>
 
 );
