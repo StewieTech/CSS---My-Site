@@ -1,0 +1,46 @@
+
+button[type="submit"] {
+    padding: 10px 0px; 
+    width: 100%;
+    max-width: 800px;
+    margin-top: 10px; /* Add some space between textarea and button */
+    background-color: #892be276; /* Purple */
+    color: white; /* Text color */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif; /* Use the Poppins font */
+    font-size: calc(10px + 2vmin);
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(143, 137, 137, 0.78);
+    border: none;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #4b0082; /* Darker purple on hover */
+    color: white; /* Text color */
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+    color: white; /* Text color */
+  
+    max-width: 800px;
+  };
+  
+  .upload-button {
+  
+    height: 10%;
+    width: 10%;
+    display: 'inline-block';
+    /* border-radius: 50%; */
+  
+    margin-right: 10px;  
+    display: flex;
+    align-items: left;
+    justify-content: center; 
+  }
+  

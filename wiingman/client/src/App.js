@@ -19,7 +19,9 @@ import ImageDisplayComponent from './components/ImageDisplayComponent';
 
 // Assets
 import './App.css';
-// const pictureList = [ 'lola2.png', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png',  'lola6v4.png', 'lola5.png']
+import './css/Base.css';
+import './css/Typography.css';
+import './css/FormsAndButtons.css';
 
 
 // Constants
@@ -33,7 +35,6 @@ const MAX_QUESTION_LIMIT_FREE = 2
 console.log(process.env.REACT_APP_API_URL)
 console.log("Hey")
 
-// const pictureList = [ 'lola2.jpeg', 'lola.webp', 'lolac.png', 'lola3.png', 'lola4.png', 'lola5.png' ];
 
 function App() {
   const [message, setMessage] = useState('');

@@ -1,20 +1,4 @@
-.App {
-  text-align: center;
-  max-width: 800px; /* Set a maximum width for the container */
-  width: 100%;
-  padding: 15px; /* Add some padding to the container */
-}
 
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* height: 100vh; */
-  background-color: #282c34;
-  color: #fff; /* Set the text color to white */
-  font-size: 24px; 
-}
 
 .App-logo {
   height: 40vmin;
@@ -32,22 +16,9 @@ body {
 }
 
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: calc(10px + 2vmin);
-  color: white ;
-}
 
-.App-link {
-  color: #8a2be2; /* Purple */
-  text-decoration: none;
-  align-items: center;
-  text-align: center;
-}
+
+
 
 .div {
   align-items: center;
@@ -69,51 +40,8 @@ body {
   
 }
 
-/* Styling for the link on hover */
-.App-link:hover {
-  text-decoration: underline;
-}
 
 
-h1 {
-  align-items: center;
-  text-align: center;
-  line-height: 1;
-  margin-top: 0;
-
-  
-  /* position: fixed; */
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 800px;
-  background: linear-gradient(to right, #892be276, rgba(64, 0, 128, 0.2)); /* Nearly transparent purple gradient */
-  border-bottom-left-radius: 50%; /* Rounded bottom-left corner */
-  border-bottom-right-radius: 50%; /* Rounded bottom-right corner */
-
- 
-  /* background: rgba(64, 0, 128, 0.7); Super dark purple with 70% opacity */
-  color: white; /* Text color */
-  padding: 10px 0px ; /* Add some padding for spacing */
-  border-radius: 20px; /* Add rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
-  /* opacity: 60%; */
-  
-}
-
-h2 {
-  align-items: center;
-  text-align: center;
-  font-size: calc(20px + 2vmin);
-  width: 100%;
-  max-width: 800px;
-  color: #ffffffa6; /* Set the text color to white */
-  background-color: #1a1a1a; /* Dark black */
-  box-shadow: 0 4px 32px rgba(54, 13, 65, 0.675);
-  border-radius: 25px;
-  padding: 10px 0px; 
-  /* Add some padding inside the textarea */
-}
 
 
 
@@ -227,51 +155,6 @@ textarea {
   font-size: calc(10px + 2vmin);
 }
 
-
-button[type="submit"] {
-  padding: 10px 0px; 
-  width: 100%;
-  max-width: 800px;
-  margin-top: 10px; /* Add some space between textarea and button */
-  background-color: #892be276; /* Purple */
-  color: white; /* Text color */
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-family: 'Poppins', sans-serif; /* Use the Poppins font */
-  font-size: calc(10px + 2vmin);
-  border-radius: 25px;
-  box-shadow: 0 4px 6px rgba(143, 137, 137, 0.78);
-  border: none;
-}
-
-button[type="submit"]:hover {
-  background-color: #4b0082; /* Darker purple on hover */
-  color: white; /* Text color */
-  width: 100%;
-  max-width: 800px;
-}
-
-button {
-  width: 100%;
-  margin-bottom: 10px;
-  color: white; /* Text color */
-
-  max-width: 800px;
-};
-
-.upload-button {
-
-  height: 10%;
-  width: 10%;
-  display: 'inline-block';
-  /* border-radius: 50%; */
-
-  margin-right: 10px;  
-  display: flex;
-  align-items: left;
-  justify-content: center; 
-}
 
 .hide {
   display: none; /* Hide the upload button */
