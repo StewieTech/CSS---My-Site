@@ -100,7 +100,7 @@ useEffect(() => {
 
 
 // 
-  const Work = process.env.REACT_APP_API_URL2 ;
+  const Work = process.env.REACT_APP_API_URL ;
   // const Work = `http://localhost:3001` ; // test
 
   const handleSubmit = (e) => {
