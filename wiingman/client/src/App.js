@@ -22,12 +22,15 @@ import './App.css';
 import './css/Base.css';
 import './css/Typography.css';
 import './css/FormsAndButtons.css';
+import './css/Animations.css';
+
+
 
 
 // Constants
 const MIN_TIMEOUT = 2500;
 const MAX_TIMEOUT = 5000;
-const MAX_QUESTION_LIMIT_FREE = 2
+const MAX_QUESTION_LIMIT_FREE = 10
 
 
 
@@ -106,8 +109,7 @@ useEffect(() => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true); // Set loading to true when the form is submitted
-    // setPictureIndex((prevIndex) => (prevIndex + 1) % pictureList.length);
+    setIsLoading(true); 
     
     setTimeout(() => {
 
@@ -148,7 +150,7 @@ return (
 
 
 <Container fluid>
-<GoogleOAuthProvider clientId="208082140209-68a5907b43ju7427bhtt0dhibdvf4u97.apps.googleusercontent.com">
+<GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
 <div className="glass-container">
     <h1 className="text-center mt-3">Ask Lola 😉</h1>
     </div>
