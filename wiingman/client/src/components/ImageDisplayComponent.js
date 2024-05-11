@@ -4,12 +4,17 @@ import '../css/ImageDisplayComponent.css';
 const ImageDisplayComponent = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  // const imageAddress = 'http://3.80.220.82:3001/'
+  const imageAddress = 'https://lola-s3.s3.amazonaws.com/headerMain'
+  // const imageAddressTwo = 'http://localhost:3001/'
 
   useEffect(() => {
     fetch('http://localhost:3001/api/images/headerMain')
+    // fetch('${imageAddress}')
       .then(response => response.json())
       .then(headerMainImages => {
         const imagePaths = headerMainImages.map(image => `http://localhost:3001/${image}`);
+        // const imagePaths = headerMainImages.map(image => `${imageAddress}/${image}`);
         // type: file.endsWith('.mp4') ? 'video' : 'image',
         setImages(imagePaths);
         console.log(imagePaths);
