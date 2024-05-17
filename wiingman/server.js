@@ -117,7 +117,7 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
   };
   
     const payload = {
-        "model": "gpt-4-vision-preview", // Placeholder, adjust as needed
+        "model": "gpt-4o", // Placeholder, adjust as needed
         "inputs": `data:image/jpeg;base64,${imageBase64}`,
         "max_tokens": 100 ,
         "detail": "low"

@@ -27,7 +27,7 @@ def get_chat_response(user_input):
 def create_tts_audio(text):
     """Generate an audio file from text using TTS."""
     response = client.audio.speech.create(
-        model="tts-1",
+        model="tts-1-hd",
         voice="nova",
         input=text,
     )
