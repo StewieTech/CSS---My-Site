@@ -1,16 +1,16 @@
 // Library Imports
-import logo from './logo.svg';
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Form, Button, Modal, Badge } from 'react-bootstrap';
-import Tesseract from 'tesseract.js'
 import { GoogleOAuthProvider } from '@react-oauth/google';
+
+// I don't believe I need below
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // Components
 import GoogleOAuth from './components/GoogleOAuth';
 import RegistrationForm from './components/RegistrationForm';
-import Header from './components/Header';
+// import Header from './components/Header';
 import QuestionCount from './components/QuestionCount';
 import TextAreaComponent from './components/TextAreaComponent';
 import NonsenseFooter from './components/NonsenseFooter'; 
@@ -46,8 +46,9 @@ function App() {
   const randomTimeout = Math.floor(Math.random() * MAX_TIMEOUT - MIN_TIMEOUT +1) + MIN_TIMEOUT ;
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const [imageFile, setImageFile] = useState(null);
-  const [ocrText, setOcrText] = useState('') ;
-  const [pictureIndex, setPictureIndex] = useState(0);
+  const [imageAttached, setImageAttached] = useState(false);
+  // const [ocrText, setOcrText] = useState('') ;
+  // const [pictureIndex, setPictureIndex] = useState(0);
 
   var [questionCount, setQuestionCount] = useState(0);
   const [showProPopup, setShowProPopup] = useState(false);
@@ -73,23 +74,52 @@ useEffect(() => {
 }, [questionCount]); // Depend on questionCount to re-run this effect
 
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-      Tesseract.recognize(file, 'eng')
-      .then(({ data: {text} }) => {
-        // const processedText = processTextConversation(text);
-        // setMessage(processedText);
 
-        
-        setMessage(text);
+ // I want to change this to ChatGPT 4
+
+ const handleImageUpload = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    setImageFile((file));
+    setImageAttached(true);
+  }
+ };
+
+//  const handleImageUpload = (e) => {
+//   const file = e.target.files[0];
+//   if (file) {
+//     setImageFile(URL.createObjectURL(file));
+//     setImageAttached(true);
+//   }
+//  };
+ 
+ 
+ /*
+ const handleImageUpload = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    setImageFile(file);
+    const formData = new FormData();
+    formData.append('image', file);
+
+    fetch(`${process.env.REACT_APP_API_URL}api/upload`, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.choices && data.choices.length > 0) {
+          setMessage(data.choices[0].message.content);
+        } else {
+          console.error('Error extracting text:', data);
+        }
       })
       .catch((error) => {
-        console.error('Error extracting text:',error);
-      })
-    }
+        console.error('Error extracting text:', error);
+      });
   }
+};
+*/
 
 
 
@@ -104,16 +134,47 @@ useEffect(() => {
 
 
 // 
-  const Work = process.env.REACT_APP_API_URL ;
-  // const Work = `http://localhost:3001` ; // test
+  const backendAddress = process.env.REACT_APP_API_URL ;
+  // const backendAddress = `http://localhost:3001` ; // test
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true); 
-    
-    setTimeout(() => {
 
-      fetch(Work, {
+    if (imageFile) {
+      const formData = new FormData();
+      formData.append('image', imageFile);
+      formData.append('message', message);
+      
+      fetch('http://localhost:3001/api/upload', {
+      // fetch('${backendAddress}api/upload', {
+        method: 'POST',
+        body: formData,
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) {
+          setResponse(data.message);
+          setQuestionCount((prevCount) => prevCount + 1);
+        } else {
+          setResponse('Error: No message received');
+        }
+      })
+      .catch((error) => {
+        console.log('Error GPT4 not fetching: ', error);
+        setResponse('Error: Request failed');
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setImageFile(null); 
+        setImageAttached(false);
+      });
+    } else {
+     
+      
+      setTimeout(() => {
+
+      fetch(backendAddress, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -140,10 +201,11 @@ useEffect(() => {
       });
       
     }, randomTimeout);
-};
 
-// var smiley = ';)'
+  }
+  };
 
+  
 return (
 
 
@@ -171,6 +233,8 @@ return (
         handleImageUpload={handleImageUpload}
         handleTextareaBlur={handleTextareaBlur}
         handleSubmit={handleSubmit}
+        imageAttached={imageAttached}
+        imagePreview={imageFile}
       />
        
              </div>

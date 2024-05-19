@@ -1,11 +1,11 @@
 import { FiCamera, FiArrowRight } from 'react-icons/fi';
-import {Container, Row, Col, Form, Button, Modal, Badge } from 'react-bootstrap';
+import {Form, Button, Image } from 'react-bootstrap';
 import React, { useState } from 'react';
 import axios from 'axios';
 
 
 
-const TextAreaComponent = ({message, setMessage, isTextareaFocused, handleTextareaFocus, handleImageUpload, handleTextareaBlur, handleSubmit}) => {
+const TextAreaComponent = ({message, setMessage, isTextareaFocused, handleTextareaFocus, handleImageUpload, handleTextareaBlur, handleSubmit, imageAttached, imagePreview}) => {
 
 
   
@@ -15,7 +15,7 @@ const TextAreaComponent = ({message, setMessage, isTextareaFocused, handleTextar
           <Form.Control
             as="textarea"
             value={message}
-            placeholder="Ask your wingwomen anything ;)"
+            placeholder="Ask your Relationship Expert anything ;)"
             onChange={(e) => setMessage(e.target.value)}
             onFocus={handleTextareaFocus}
             onBlur={handleTextareaBlur}
@@ -35,6 +35,12 @@ const TextAreaComponent = ({message, setMessage, isTextareaFocused, handleTextar
             onChange={handleImageUpload} // You need to pass handleImageUpload as prop
             style={{ display: 'none'}}
           />
+          {imageAttached && (
+            <div className="image-preview">
+              <Image src={imagePreview} thumbnail />
+
+            </div>
+          )}
         </Form.Group>
         <Button variant="primary" type="submit" block>
           Send Message 💜

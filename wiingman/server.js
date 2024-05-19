@@ -1,8 +1,7 @@
 require('dotenv').config();
 const OpenAI = require('openai');
 const {Configuration, OpenAIApi} = OpenAI;
-
-
+const axios = require('axios');
 const secrets = require('./secrets');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -10,13 +9,18 @@ const cors = require('cors');
 const app = express();
 const multer = require('multer');
 
-const axios = require('axios');
 
 const fs = require('fs');
+const FormData = require('form-data');
 const path = require('path');
 const port = process.env.PORT || 3001;
 
 const upload = multer({ dest: 'uploads/' });
+const apiKey = process.env.OPENAI_API_KEY;
+
+// might not be using the two lines below as I may just be using body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 app.use(bodyParser.json());
@@ -69,13 +73,14 @@ app.post('/', async (req, res) => {
   
   const response = await openai.createChatCompletion({
     "model": "gpt-3.5-turbo",
+    // "model": "gpt-4",
     messages: [
       {role: "system", content: contentAnswer},
       {role: "user", content: message},
     ],
     
     
-    "max_tokens": 40,
+    "max_tokens": 80,
     "temperature": 0
   });
   
@@ -92,48 +97,120 @@ app.post('/', async (req, res) => {
 
 
 
+
+// Route for uploading and processing images
+app.post('/api/upload', upload.single('image'), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).send('No image uploaded family.');
+  }
+  
+  let {message} = req.body ;
+
+  if (typeof message !== 'string') {
+    message = JSON.stringify(message);
+  }
+
+  const visionLola = secrets.visionLola;
+  const filePath = req.file.path;
+  const mimeType = req.file.mimetype;
+  const imageBase64 = fs.readFileSync(filePath, { encoding: 'base64' });
+  
+  // Immediately delete the file after reading
+  fs.unlinkSync(filePath);
+  
+try {
+  console.log(visionLola);
+  const data = {
+    model: "gpt-4-turbo",
+    // model: "gpt-4-vision-preview",
+    messages: [
+      // { role: "system", content: contentAnswer },
+      {
+        "role": "user",
+        "content": [
+          { "type": "text", 
+           "text": visionLola 
+        },
+          { 
+            "type": "image_url", 
+            "image_url": `data:${mimeType};base64,${imageBase64}`
+          } 
+        ],
+      }
+    ]  ,
+    max_tokens: 40,
+  };
+    
+    // Make the request to the OpenAI API
+    axios.post('https://api.openai.com/v1/chat/completions', data, {
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      const answer = response.data.choices[0].message.content;
+      res.json({ message: answer });
+      console.log(response.data.choices[0].message.content);
+    })
+    .catch(error => {
+      console.error('Error:', error.response ? error.response.data : error.message);
+    });
+  }
+  catch (error) {
+    console.error('Error communicating with OpenAI API:', error);
+    res.status(500).json({ error: 'Failed to fetch from OpenAI API' });
+  }
+});
+
 app.get('/', (req, res) => {
   console.log('Root route accessed');
     res.send('Hey Yall World')
 });
 
           
-app.use(express.static(path.join(__dirname, 'client', 'public')));
-          
-// Route for uploading and processing images
-app.post('/api/upload', upload.single('image'), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).send('No image uploaded.');
-  }
+ 
+// try {
+//   const data = {
+//     model: "gpt-4-vision-preview",
+//     messages: [
+//       // { role: "system", content: contentAnswer },
+//       {
+//         "role": "user",
+//         "content": [
+//           // { "type": "text", "text": "What do you think the person in the image is doing?" },
+//           { 
+//             "type": "image_url", 
+//             "image_url": `data:${mimeType};base64,${imageBase64}`
+//           } 
+//         ],
+//       }
+//     ],
+//     max_tokens: 80,
+//   };
   
-  const filePath = req.file.path;
-  const imageBase64 = fs.readFileSync(filePath, { encoding: 'base64' });
-  
-  // Immediately delete the file after reading
-  fs.unlinkSync(filePath);
-  
-  const headers = {
-    "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-  };
-  
-    const payload = {
-        "model": "gpt-4o", // Placeholder, adjust as needed
-        "inputs": `data:image/jpeg;base64,${imageBase64}`,
-        "max_tokens": 100 ,
-        "detail": "low"
-    };
-
-    try {
-        // Assuming the vision API expects a POST request with the image in base64 HEREEE
-        const response = await axios.post('https://api.openai.com/v1/chat/completions', payload, { headers: headers });
-        res.json(response.data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error processing the image with GPT-4 Vision API");
-    }
-});
-
-
+//   // Make the request to the OpenAI API
+//   axios.post('https://api.openai.com/v1/chat/completions', data, {
+//     headers: {
+//       'Authorization': `Bearer ${apiKey}`,
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//   .then(response => {
+//     const answer = response.data.choices[0].message.content;
+//     res.json({ message: answer });
+//     console.log(response.data.choices[0].message.content);
+//   })
+//   .catch(error => {
+//     console.error('Error:', error.response ? error.response.data : error.message);
+//   });
+// }
+// catch (error) {
+//   console.error('Error communicating with OpenAI API:', error);
+//   res.status(500).json({ error: 'Failed to fetch from OpenAI API' });
+// }
+      
+      app.use(express.static(path.join(__dirname, 'client', 'public')));
 
 
 
