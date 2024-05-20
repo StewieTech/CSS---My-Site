@@ -47,6 +47,7 @@ function App() {
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const [imageAttached, setImageAttached] = useState(false);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(' ');
   // const [ocrText, setOcrText] = useState('') ;
   // const [pictureIndex, setPictureIndex] = useState(0);
 
@@ -82,8 +83,17 @@ useEffect(() => {
   if (file) {
     setImageFile((file));
     setImageAttached(true);
+    const reader = new FileReader();
+reader.onload = () => {
+  setImagePreviewUrl(reader.result);
+};
+reader.readAsDataURL(file);
+
   }
- };
+};
+
+
+
 
 //  const handleImageUpload = (e) => {
 //   const file = e.target.files[0];
@@ -93,6 +103,7 @@ useEffect(() => {
 //   }
 //  };
  
+
  
  /*
  const handleImageUpload = (e) => {
@@ -121,8 +132,6 @@ useEffect(() => {
 };
 */
 
-
-
   const handleSignUpForPro = () => {
     setShowProPopup(false);
   }
@@ -130,7 +139,6 @@ useEffect(() => {
   const handleCloseProPopup = () => {
     setShowProPopup(false);
   };
-
 
 
 // 
@@ -142,9 +150,11 @@ useEffect(() => {
     setIsLoading(true); 
 
     if (imageFile) {
+      console.log('File type:', imageFile.type);
       const formData = new FormData();
       formData.append('image', imageFile);
       formData.append('message', message);
+      console.log(formData);
       
       fetch('http://localhost:3001/api/upload', {
       // fetch('${backendAddress}api/upload', {
@@ -234,7 +244,8 @@ return (
         handleTextareaBlur={handleTextareaBlur}
         handleSubmit={handleSubmit}
         imageAttached={imageAttached}
-        imagePreview={imageFile}
+        // imagePreview={imageFile}
+        imagePreviewUrl={imagePreviewUrl}
       />
        
              </div>
@@ -269,22 +280,11 @@ return (
        />
       </Col>
     </Row>
-
-
-
-
           <NonsenseFooter/>
-   
-
-
       <div className="App">
         <GoogleOAuth />
       </div>
-
     <RegistrationForm />
-
-
-
     </GoogleOAuthProvider>
   </Container>
 

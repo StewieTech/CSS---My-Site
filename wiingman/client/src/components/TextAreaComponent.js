@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-const TextAreaComponent = ({message, setMessage, isTextareaFocused, handleTextareaFocus, handleImageUpload, handleTextareaBlur, handleSubmit, imageAttached, imagePreview}) => {
+const TextAreaComponent = ({message, setMessage, isTextareaFocused, handleTextareaFocus, handleImageUpload, handleTextareaBlur, handleSubmit, imageAttached, imagePreviewUrl}) => {
 
 
   
@@ -35,9 +35,12 @@ const TextAreaComponent = ({message, setMessage, isTextareaFocused, handleTextar
             onChange={handleImageUpload} // You need to pass handleImageUpload as prop
             style={{ display: 'none'}}
           />
+          <input type="file" onChange={handleImageUpload} style={{ display: 'none' }}/>
+          
           {imageAttached && (
             <div className="image-preview">
-              <Image src={imagePreview} thumbnail />
+              <Image src={imagePreviewUrl} alt="Image Preview"  />
+              
 
             </div>
           )}

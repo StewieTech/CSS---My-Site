@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const multer = require('multer');
+const contentAnswer = secrets.contentAnswer ;
 
 
 const fs = require('fs');
@@ -68,7 +69,7 @@ app.post('/googlelogin', async (req, res) => {
 app.post('/', async (req, res) => {
   
   const {message} = req.body ;
-  const contentAnswer = secrets.contentAnswer ;
+
   
   
   const response = await openai.createChatCompletion({
@@ -106,11 +107,12 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
   
   let {message} = req.body ;
 
-  if (typeof message !== 'string') {
-    message = JSON.stringify(message);
-  }
+  // if (typeof message !== 'string') {
+  //   message = JSON.stringify(message);
+  // }
 
   const visionLola = secrets.visionLola;
+  const visionLolaImage = secrets.visionLolaImage;
   const filePath = req.file.path;
   const mimeType = req.file.mimetype;
   const imageBase64 = fs.readFileSync(filePath, { encoding: 'base64' });
@@ -119,75 +121,117 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
   fs.unlinkSync(filePath);
   
 try {
-  console.log(visionLola);
+    console.log(typeof message);
+    console.log(message);
+
+    console.log(req.file);
+    console.log(typeof imageBase64);
+
   const data = {
-    model: "gpt-4-turbo",
-    // model: "gpt-4-vision-preview",
+    // model: "gpt-4o",
+    model: "gpt-4-vision-preview",
+    // model: "gpt-4-turbo",
     messages: [
-      // { role: "system", content: contentAnswer },
+      // { role: "system", content: visionLola },
       {
         "role": "user",
         "content": [
-          { "type": "text", 
-           "text": visionLola 
-        },
+          // { "type": "text", "text": message },
           { 
             "type": "image_url", 
             "image_url": `data:${mimeType};base64,${imageBase64}`
           } 
         ],
       }
-    ]  ,
-    max_tokens: 40,
+    ],
+    max_tokens: 30,
+    "temperature": 0
   };
-    
-    // Make the request to the OpenAI API
-    axios.post('https://api.openai.com/v1/chat/completions', data, {
+
+  // Make the request to the OpenAI API
+  const response = await axios.post('https://api.openai.com/v1/chat/completions', data, {
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       }
-    })
-    .then(response => {
-      const answer = response.data.choices[0].message.content;
-      res.json({ message: answer });
-      console.log(response.data.choices[0].message.content);
-    })
-    .catch(error => {
-      console.error('Error:', error.response ? error.response.data : error.message);
     });
-  }
-  catch (error) {
-    console.error('Error communicating with OpenAI API:', error);
-    res.status(500).json({ error: 'Failed to fetch from OpenAI API' });
-  }
-});
+
+   
+      const answer = response.data.choices[0].message.content;
+      // res.json({ message: answer });
+      
+      
+      const newGPT3Input = `${visionLolaImage} ${answer} ${message}`;
+      console.log(newGPT3Input);
+
+      const responseGPT3 = await openai.createChatCompletion({
+        "model": "gpt-3.5-turbo",
+        // "model": "gpt-4",
+        messages: [
+          {role: "system", content: contentAnswer},
+          // {role: "user", content:  visionLolaImage + answer + message},
+          {role: "user", content:  newGPT3Input},
+        ],
+        
+        
+        "max_tokens": 30,
+        "temperature": 0
+      });
+      
+      console.log("GPT3 data: ", responseGPT3.data)
+    
+     var answerGPT3 = responseGPT3["data"]["choices"][0]["message"]["content"]
+     console.log(answerGPT3);
+     if(answerGPT3) {
+           res.json({
+               message: answerGPT3
+           });
+       }
+       else {
+        res.status(500).json({ error: 'Failed to fetch from GPT-3.5-turbo' });
+      }
+  
+    } catch (error) {
+      console.error('Error communicating with OpenAI API:', error);
+      res.status(500).json({ error: 'Failed to fetch from OpenAI API' });
+    }
+  });
+
+
 
 app.get('/', (req, res) => {
   console.log('Root route accessed');
-    res.send('Hey Yall World')
+  res.send('Hey Yall World')
 });
 
-          
- 
+
+
 // try {
-//   const data = {
-//     model: "gpt-4-vision-preview",
-//     messages: [
-//       // { role: "system", content: contentAnswer },
-//       {
-//         "role": "user",
-//         "content": [
-//           // { "type": "text", "text": "What do you think the person in the image is doing?" },
-//           { 
-//             "type": "image_url", 
-//             "image_url": `data:${mimeType};base64,${imageBase64}`
-//           } 
-//         ],
-//       }
-//     ],
-//     max_tokens: 80,
-//   };
+//   console.log(typeof message);
+//   console.log(message);
+
+//   console.log(req.file);
+//   console.log(typeof imageBase64);
+
+// const data = {
+//   // model: "gpt-4o",
+//   // model: "gpt-4-vision-preview",
+//   model: "gpt-4-turbo",
+//   messages: [
+//     { role: "system", content: visionLola },
+//     {
+//       "role": "user",
+//       "content": [
+//         { "type": "text", "text": message },
+//         { 
+//           "type": "image_url", 
+//           "image_url": `data:${mimeType};base64,${imageBase64}`
+//         } 
+//       ],
+//     }
+//   ],
+//   max_tokens: 40,
+// };
   
 //   // Make the request to the OpenAI API
 //   axios.post('https://api.openai.com/v1/chat/completions', data, {
