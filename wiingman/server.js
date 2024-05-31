@@ -3,6 +3,8 @@ const OpenAI = require('openai');
 const {Configuration, OpenAIApi} = OpenAI;
 const axios = require('axios');
 const secrets = require('./secrets');
+const registerRoute = require('./register');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -25,6 +27,9 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(bodyParser.json());
+
+
+
 app.use(cors());
 
 
@@ -37,6 +42,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 const {OAuth2Client} = require('google-auth-library');
+const {User} = require('./serverMongo');
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 app.get('/google-auth', (req, res) => {
@@ -65,6 +71,7 @@ app.post('/googlelogin', async (req, res) => {
           });
         });
         
+app.use('/register', registerRoute);
 
 app.post('/', async (req, res) => {
   

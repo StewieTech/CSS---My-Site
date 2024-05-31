@@ -15,7 +15,15 @@ const NonsenseFooter = () => {
         <Row className="justify-content-center mt-3">
           <Col xs={12} sm={8} md={6} lg={4} className="text-center">
             <p>
-              <code>Hi I'm Lola 💜 <br></br>Your Personal AI Relationship Expert</code>
+              <code>Hi I'm Lola 💜 Your Relationship Expert
+              <br></br>
+               Ask me how to text your crush, first date ideas, 
+               <br></br>
+               advice on your long term relationship 
+               <br></br>
+               or even couples therapy questions :)
+              
+              </code>
             </p>
             <p className="text-center">
               <a
@@ -24,7 +32,7 @@ const NonsenseFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                I am copying this app
+                This App Copied Me
               </a>
             </p>
           </Col>

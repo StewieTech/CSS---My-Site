@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
+import React, { useState, useEffect, useContext } from 'react';
+import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from './AuthContext';
+
 
 function GoogleOAuth() { // Renaming for consistency
   const [clientId, setClientId] = useState('');
+  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // useEffect(() => {
   //   fetch('/google-auth')
@@ -16,26 +21,40 @@ function GoogleOAuth() { // Renaming for consistency
 
   useEffect(() => {
     // Temporarily use a hardcoded value to test the flow
-    const data = { clientId: '208082140209-68a5907b43ju7427bhtt0dhibdvf4u97.apps.googleusercontent.com' };
+    const data = { clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID };
     setClientId(data.clientId);
     console.log('clientId:', data.clientId);
   }, []);
   
 
+  // This was some workaround trying another method
+  // const onSuccess = (res) => {
+  //   console.log("Login Success! Current user: ", res.profileObj);
+  // };
   const onSuccess = (res) => {
     console.log("Login Success! Current user: ", res.profileObj);
+    setIsLoggedIn(true);
+    navigate('/login');
   };
 
   const onFailure = (res) => {
     console.error("Login Failed: ", res);
   };
 
+  const handleLogout = () => {
+    googleLogout();
+    setIsLoggedIn(false);
+    navigate('/');
+  }
+
   if (!clientId) {
     return <p>Loading...</p>; // Or any other loading indicator
   }
 
   return (
-    <div id="signInButton">
+    <div id="authButtons">
+    {!isLoggedIn ? (
+
       <GoogleLogin
         clientId={clientId}
         buttonText="Login with Google"
@@ -44,6 +63,9 @@ function GoogleOAuth() { // Renaming for consistency
         cookiePolicy={'single_host_origin'}
         isSignedIn={true}
       />
+    ) : (
+      <button className="auth-button" onClick={handleLogout}>Logout</button>
+    )}
     </div>
   );
 }

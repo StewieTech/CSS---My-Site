@@ -2,6 +2,8 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Form, Button, Modal, Badge } from 'react-bootstrap';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { AuthProvider } from './components/AuthContext';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // I don't believe I need below
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,6 +11,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Components
 import GoogleOAuth from './components/GoogleOAuth';
+import RegistrationSuccess from './components/RegistrationSuccess';
 import RegistrationForm from './components/RegistrationForm';
 // import Header from './components/Header';
 import QuestionCount from './components/QuestionCount';
@@ -219,10 +222,13 @@ reader.readAsDataURL(file);
 return (
 
 
-
-
-<Container fluid>
+  
+  
 <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+<AuthProvider>
+
+  <Router>
+  <Container fluid>
 <div className="glass-container">
     <h1 className="text-center mt-3">Ask Lola 😉</h1>
     </div>
@@ -274,19 +280,23 @@ return (
 
     <Row className="justify-content-center mt-3">
       <Col xs={12} sm={8} md={6} lg={4}>
-       <ImageDisplayComponent
-        // pictureList={pictureList}
-        // pictureIndex={pictureIndex}
-       />
+       <ImageDisplayComponent/>
       </Col>
     </Row>
           <NonsenseFooter/>
       <div className="App">
         <GoogleOAuth />
       </div>
-    <RegistrationForm />
-    </GoogleOAuthProvider>
+      <Routes>
+        <Route path="/" element={<RegistrationForm />} />
+        <Route path="/login" element={<RegistrationForm />} />
+        <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/register-success" element={<RegistrationSuccess />} />
+      </Routes>
   </Container>
+    </Router>
+</AuthProvider>
+    </GoogleOAuthProvider>
 
 );
 }
