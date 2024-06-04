@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // Components
 import GoogleOAuth from './components/GoogleOAuth';
 import RegistrationSuccess from './components/RegistrationSuccess';
+import LoginSuccess from './components/LoginSuccess';
 import RegistrationForm from './components/RegistrationForm';
 // import Header from './components/Header';
 import QuestionCount from './components/QuestionCount';
@@ -26,6 +27,7 @@ import './css/Base.css';
 import './css/Typography.css';
 import './css/FormsAndButtons.css';
 import './css/Animations.css';
+import DashboardNav from './components/Dashboard';
 
 
 
@@ -225,9 +227,9 @@ return (
   
   
 <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+  <Router>
 <AuthProvider>
 
-  <Router>
   <Container fluid>
 <div className="glass-container">
     <h1 className="text-center mt-3">Ask Lola 😉</h1>
@@ -289,13 +291,14 @@ return (
       </div>
       <Routes>
         <Route path="/" element={<RegistrationForm />} />
+        <Route path="/dashboard" element={<DashboardNav />} />
         <Route path="/login" element={<RegistrationForm />} />
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/register-success" element={<RegistrationSuccess />} />
       </Routes>
   </Container>
-    </Router>
 </AuthProvider>
+    </Router>
     </GoogleOAuthProvider>
 
 );

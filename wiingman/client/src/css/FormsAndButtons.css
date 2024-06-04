@@ -60,3 +60,51 @@ button[type="submit"] {
   .auth-button:hover {
     background-color: #357ae8;
   }
+
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.form-button {
+  background-color: #6a1b9a; /* Purple color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.form-button:hover {
+  background-color: #4a0072;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form-button img {
+  margin-right: 10px;
+}
+
+.form-button-icon {
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-button-icon img {
+  width: 20px;
+  height: 20px;
+}

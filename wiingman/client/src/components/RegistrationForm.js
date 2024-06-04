@@ -8,6 +8,7 @@ import AuthContext from './AuthContext';
 
 const RegistrationForm = () => {
   const { isLoggedIn } = useContext(AuthContext);
+  const [formMode, setFormMode] = useState(null);
   const [name, setName] = useState(' ');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,11 +19,13 @@ const RegistrationForm = () => {
     navigate('/');
   }
 
-  const handleSubmit = async (e) => {
+
+
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/register', {
+      const response = await fetch('http://localhost:3001/register/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,6 +38,10 @@ const RegistrationForm = () => {
         console.log('Registration successful');
         console.log(name, email);
         navigate('/register-success');
+        setTimeout(() => {
+          navigate('/');
+          // eventually add isRegistered? LoL
+        }, 3000);
       } else {
         // Handle registration errors
         console.error('Registration failed');
@@ -44,12 +51,47 @@ const RegistrationForm = () => {
     }
   };
 
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+
+  const response = await fetch('http://localhost:3001/register/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (response.ok) {
+    console.log('Login successful');
+    navigate('/dashboard');
+  } else { 
+    console.error('Login failed');
+    console.log(email);
+  } 
+}
+  catch (error) {
+    console.error('Error during login ', error);
+  }
+  };
+
   return (
+    <div>
+      {formMode === null && (
+        <div className="button-container">
+          <button className="form-button" onClick={() => setFormMode('login')}>Login with Email</button>
+          <button className ="form-button" onClick={() => setFormMode('register')}>Register</button>
+        </div>
+      )}
+      
+      {formMode === 'register' && (
     <div>
       {isLoggedIn ? (
      console.log('nice registration form')
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleRegisterSubmit}>
           <div>
             <label>Name:</label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -76,10 +118,41 @@ const RegistrationForm = () => {
         </form>
       )}
     </div>
-  );
-};
+  )}
 
+{formMode === 'login' && (
+  <div>
+
+  {!isLoggedIn ? (
+        <form onSubmit={handleLoginSubmit}>
+          <div>
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      ) : (
+      <button className="auth-button" onClick={handleLogout}>Logout</button>
+    )}
+  </div>
+      )}
+    </div>
+    
+
+      )}
+    
 export default RegistrationForm;
-
-
-

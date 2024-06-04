@@ -1,6 +1,6 @@
-import pg from "pg"
+const { Client } = require('pg')
 
-const db = new pg.Client({
+const db = new Client({
     user: "postgres",
     host: "localhost",
     database: "userLola",

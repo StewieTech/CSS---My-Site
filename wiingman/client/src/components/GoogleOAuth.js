@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from './AuthContext';
 
 
-function GoogleOAuth() { // Renaming for consistency
+function GoogleOAuth() { 
   const [clientId, setClientId] = useState('');
-  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  const {isLoggedIn, setIsLoggedIn, handleLogout} = useContext(AuthContext);
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -23,7 +23,7 @@ function GoogleOAuth() { // Renaming for consistency
     // Temporarily use a hardcoded value to test the flow
     const data = { clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID };
     setClientId(data.clientId);
-    console.log('clientId:', data.clientId);
+    // console.log('clientId:', data.clientId);
   }, []);
   
 
@@ -34,18 +34,18 @@ function GoogleOAuth() { // Renaming for consistency
   const onSuccess = (res) => {
     console.log("Login Success! Current user: ", res.profileObj);
     setIsLoggedIn(true);
-    navigate('/login');
+    navigate('/dashboard');
   };
 
   const onFailure = (res) => {
     console.error("Login Failed: ", res);
   };
 
-  const handleLogout = () => {
-    googleLogout();
-    setIsLoggedIn(false);
-    navigate('/');
-  }
+  // const handleLogout = () => {
+  //   googleLogout();
+  //   setIsLoggedIn(false);
+  //   navigate('/');
+  // }
 
   if (!clientId) {
     return <p>Loading...</p>; // Or any other loading indicator
