@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fruitsproject": "file:",
     "mongodb": "^4.9.1",
     "mongoose": "^6.5.4"
   }

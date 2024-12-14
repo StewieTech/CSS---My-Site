@@ -14,6 +14,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.7.4",
+    "ejs-challenge": "file:",
     "express": "^4.18.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.6.0"
